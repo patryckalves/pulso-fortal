@@ -1,0 +1,170 @@
+[
+  {
+    "id": "centro",
+    "nome": "Centro",
+    "pop": 28500,
+    "empresas": 4200,
+    "salario_medio": 3200,
+    "empregos_formais": 48000,
+    "crescimento": 2.3,
+    "setores": [
+      "Comércio",
+      "Serviços",
+      "Administração Pública"
+    ]
+  },
+  {
+    "id": "aldeota",
+    "nome": "Aldeota",
+    "pop": 42000,
+    "empresas": 3800,
+    "salario_medio": 4500,
+    "empregos_formais": 35000,
+    "crescimento": 1.8,
+    "setores": [
+      "Serviços",
+      "Saúde",
+      "Educação"
+    ]
+  },
+  {
+    "id": "meireles",
+    "nome": "Meireles",
+    "pop": 37000,
+    "empresas": 2900,
+    "salario_medio": 3800,
+    "empregos_formais": 22000,
+    "crescimento": 1.5,
+    "setores": [
+      "Turismo",
+      "Gastronomia",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "messejana",
+    "nome": "Messejana",
+    "pop": 115000,
+    "empresas": 5100,
+    "salario_medio": 2100,
+    "empregos_formais": 28000,
+    "crescimento": 4.2,
+    "setores": [
+      "Comércio",
+      "Indústria",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "barra-do-ceara",
+    "nome": "Barra do Ceará",
+    "pop": 72000,
+    "empresas": 1800,
+    "salario_medio": 1650,
+    "empregos_formais": 8500,
+    "crescimento": 3.1,
+    "setores": [
+      "Comércio",
+      "Pesca",
+      "Turismo"
+    ]
+  },
+  {
+    "id": "jose-walter",
+    "nome": "José Walter",
+    "pop": 48000,
+    "empresas": 1200,
+    "salario_medio": 1780,
+    "empregos_formais": 6200,
+    "crescimento": 5.0,
+    "setores": [
+      "Comércio",
+      "Construção Civil",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "mondubim",
+    "nome": "Mondubim",
+    "pop": 65000,
+    "empresas": 2100,
+    "salario_medio": 1900,
+    "empregos_formais": 11000,
+    "crescimento": 3.8,
+    "setores": [
+      "Comércio",
+      "Logística",
+      "Indústria"
+    ]
+  },
+  {
+    "id": "parangaba",
+    "nome": "Parangaba",
+    "pop": 43000,
+    "empresas": 2300,
+    "salario_medio": 2400,
+    "empregos_formais": 15000,
+    "crescimento": 2.7,
+    "setores": [
+      "Comércio",
+      "Educação",
+      "Saúde"
+    ]
+  },
+  {
+    "id": "varjota",
+    "nome": "Varjota",
+    "pop": 18000,
+    "empresas": 1600,
+    "salario_medio": 5200,
+    "empregos_formais": 18000,
+    "crescimento": 6.1,
+    "setores": [
+      "Tecnologia",
+      "Gastronomia",
+      "Serviços"
+    ]
+  },
+  {
+    "id": "papicu",
+    "nome": "Papicu",
+    "pop": 32000,
+    "empresas": 2500,
+    "salario_medio": 3400,
+    "empregos_formais": 25000,
+    "crescimento": 3.5,
+    "setores": [
+      "Serviços",
+      "Comércio",
+      "Construção Civil"
+    ]
+  },
+  {
+    "id": "bom-jardim",
+    "nome": "Bom Jardim",
+    "pop": 98000,
+    "empresas": 2800,
+    "salario_medio": 1550,
+    "empregos_formais": 9500,
+    "crescimento": 4.8,
+    "setores": [
+      "Comércio",
+      "Serviços",
+      "Construção Civil"
+    ]
+  },
+  {
+    "id": "edson-queiroz",
+    "nome": "Edson Queiroz",
+    "pop": 28000,
+    "empresas": 1400,
+    "salario_medio": 3600,
+    "empregos_formais": 12000,
+    "crescimento": 2.1,
+    "setores": [
+      "Educação",
+      "Saúde",
+      "Serviços"
+    ]
+  }
+]

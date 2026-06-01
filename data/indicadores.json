@@ -1,0 +1,87 @@
+{
+  "fortaleza": {
+    "populacao": 2428678,
+    "pib_per_capita": 31200,
+    "empregos_formais": 998708,
+    "salario_medio": 3119,
+    "salario_mediano": 1796,
+    "empresas_ativas": 85000,
+    "meis_ativos": 180000,
+    "taxa_desemprego": 8.7,
+    "crescimento_anual": 3.2
+  },
+  "serie_historica": [
+    {
+      "mes": "2024-01",
+      "admissoes": 28450,
+      "desligamentos": 23100,
+      "salario_medio": 2361
+    },
+    {
+      "mes": "2024-02",
+      "admissoes": 26100,
+      "desligamentos": 22800,
+      "salario_medio": 2384
+    },
+    {
+      "mes": "2024-03",
+      "admissoes": 31200,
+      "desligamentos": 24800,
+      "salario_medio": 2438
+    },
+    {
+      "mes": "2024-04",
+      "admissoes": 29800,
+      "desligamentos": 25300,
+      "salario_medio": 2490
+    },
+    {
+      "mes": "2024-05",
+      "admissoes": 30500,
+      "desligamentos": 24400,
+      "salario_medio": 2502
+    },
+    {
+      "mes": "2024-06",
+      "admissoes": 28900,
+      "desligamentos": 23900,
+      "salario_medio": 2545
+    },
+    {
+      "mes": "2024-07",
+      "admissoes": 27100,
+      "desligamentos": 25100,
+      "salario_medio": 2508
+    },
+    {
+      "mes": "2024-08",
+      "admissoes": 29300,
+      "desligamentos": 24200,
+      "salario_medio": 2515
+    },
+    {
+      "mes": "2024-09",
+      "admissoes": 31400,
+      "desligamentos": 23700,
+      "salario_medio": 2521
+    },
+    {
+      "mes": "2024-10",
+      "admissoes": 28600,
+      "desligamentos": 24900,
+      "salario_medio": 2494
+    },
+    {
+      "mes": "2024-11",
+      "admissoes": 26400,
+      "desligamentos": 25600,
+      "salario_medio": 2499
+    },
+    {
+      "mes": "2024-12",
+      "admissoes": 22100,
+      "desligamentos": 31200,
+      "salario_medio": 3119
+    }
+  ]
+}

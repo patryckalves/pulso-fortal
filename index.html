@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grão Bairro Fortaleza — Inteligência de Bairros</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="logo-icon">🏘️</span>
+      Grão Bairro
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="onde-abrir.html">Onde Abrir?</a></li>
+      <li><a href="termometro.html">Termômetro</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+      <li><a href="contracheque.html">Contracheque</a></li>
+      <li><a href="radar-mei.html">Radar MEI</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="container">
+    <h1>Dados que revelam o <span class="accent">potencial de cada bairro</span> de Fortaleza</h1>
+    <p>Grão Bairro transforma dados públicos em inteligência prática para microempreendedores, comerciantes e cidadãos descobrirem onde crescer, investir e trabalhar.</p>
+    <div class="stat-row">
+      <div class="stat-card">
+        <div class="stat-label">Empregos Formais</div>
+        <div class="stat-value">998 mil</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Empresas Ativas</div>
+        <div class="stat-value">85 mil</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Salário Médio</div>
+        <div class="stat-value">R$ 3.119</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Bairros Mapeados</div>
+        <div class="stat-value">12+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2 class="section-title">Explore as ferramentas</h2>
+  <p class="section-subtitle">Cada módulo responde a uma pergunta real de quem empreende no bairro</p>
+
+  <div class="card-grid">
+
+    <a href="onde-abrir.html" class="card">
+      <div class="card-icon" style="background:var(--color-accent-light);">📍</div>
+      <h3>Onde Abrir?</h3>
+      <p>Descubra o melhor bairro para abrir seu negócio. Análise por setor, concorrência, renda da população e potencial de crescimento.</p>
+    </a>
+
+    <a href="termometro.html" class="card">
+      <div class="card-icon" style="background:var(--color-green-light);">🌡️</div>
+      <h3>Termômetro do Bairro</h3>
+      <p>Acompanhe indicadores econômicos por bairro em tempo real: empregos gerados, abertura de empresas, movimento do comércio.</p>
+    </a>
+
+    <a href="vitrine.html" class="card">
+      <div class="card-icon" style="background:var(--color-blue-light);">🏪</div>
+      <h3>Vitrine do Bairro</h3>
+      <p>Conheça as empresas ativas em cada bairro. Um mapa do ecossistema empreendedor local para fazer parcerias e encontrar fornecedores.</p>
+    </a>
+
+    <a href="contracheque.html" class="card">
+      <div class="card-icon" style="background:var(--color-accent-light);">💰</div>
+      <h3>Contracheque do Bairro</h3>
+      <p>Entenda o poder de compra da vizinhança. Salário médio, distribuição de renda e potencial de consumo por bairro.</p>
+    </a>
+
+    <a href="radar-mei.html" class="card">
+      <div class="card-icon" style="background:var(--color-green-light);">🎯</div>
+      <h3>Radar do MEI</h3>
+      <p>Oportunidades sob medida para MEIs. Alertas de nichos subatendidos, incentivos fiscais e tendências de consumo local.</p>
+    </a>
+
+    <a href="/docs/arquitetura-dados.md" class="card" style="opacity:0.7;">
+      <div class="card-icon" style="background:var(--color-surface-alt);">📊</div>
+      <h3>Como Funciona</h3>
+      <p>Documentação técnica: arquitetura de dados, fontes utilizadas (RAIS, IBGE, CAGED, Brasil API) e metodologia das análises.</p>
+    </a>
+
+  </div>
+</section>
+
+<section class="container" style="padding:40px 0;">
+  <div class="info-box">
+    <strong>🔬 Dados com fundamento real</strong><br>
+    Os indicadores deste protótipo são gerados a partir de dados da <strong>RAIS 2024</strong> (1.4M de vínculos em Fortaleza), <strong>IBGE</strong> (Censo 2022), <strong>CAGED</strong> e <strong>Brasil API</strong>. A granularidade por bairro é simulada para fins de prototipação — dados reais viriam de geolocalização de CNPJs e setores censitários.
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>Grão Bairro Fortaleza — Protótipo Acadêmico • UNIFOR 2026.1</p>
+    <p style="margin-top:4px;">Projeto desenvolvido como atividade final da disciplina de Ideações para Soluções Tecnológicas</p>
+    <span class="ods-badge">🎯 ODS 8 — Trabalho Decente e Crescimento Econômico</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

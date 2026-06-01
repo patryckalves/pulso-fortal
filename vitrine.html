@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vitrine do Bairro — Grão Bairro Fortaleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="logo-icon">🏘️</span>
+      Grão Bairro
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="onde-abrir.html">Onde Abrir?</a></li>
+      <li><a href="termometro.html">Termômetro</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+      <li><a href="contracheque.html">Contracheque</a></li>
+      <li><a href="radar-mei.html">Radar MEI</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a> / Vitrine do Bairro</div>
+    <h1>🏪 Vitrine do Bairro</h1>
+    <p>Explore o ecossistema de empresas de cada bairro de Fortaleza. Encontre fornecedores, parceiros e entenda o perfil empreendedor da vizinhança.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="filter-bar">
+    <select class="form-select" id="bairroFilter" onchange="filterEmpresas()">
+      <option value="all">🏙️ Todos os bairros</option>
+    </select>
+    <select class="form-select" id="setorFilter" onchange="filterEmpresas()">
+      <option value="all">📂 Todos os setores</option>
+    </select>
+  </div>
+
+  <div id="empresasList" class="card-grid"></div>
+
+  <section class="section">
+    <h2 class="section-title">📊 Perfil empreendedor dos bairros</h2>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Bairro</th>
+          <th>Total de Empresas</th>
+          <th>MEIs</th>
+          <th>Empresas/1k hab</th>
+          <th>Setor predominante</th>
+        </tr>
+      </thead>
+      <tbody id="perfilBody"></tbody>
+    </table>
+  </section>
+
+  <section class="section">
+    <div class="info-box">
+      <strong>🔍 Sobre os dados</strong><br>
+      Esta é uma amostra representativa baseada em padrões reais de distribuição de empresas por CNAE em Fortaleza (fonte: RAIS 2024 e Brasil API). Em produção, os dados seriam completos com geolocalização exata de cada CNPJ.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Grão Bairro Fortaleza — Protótipo Acadêmico • UNIFOR 2026.1</p>
+    <span class="ods-badge">🎯 ODS 8 — Trabalho Decente e Crescimento Econômico</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+let empresas, bairros;
+
+async function init() {
+  [empresas, bairros] = await Promise.all([
+    loadData('data/empresas.json'),
+    loadData('data/bairros.json')
+  ]);
+  if (!empresas || !bairros) return;
+
+  // Populate filters
+  const bairroFilter = document.getElementById('bairroFilter');
+  bairros.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.id;
+    opt.textContent = `🏘️ ${b.nome}`;
+    bairroFilter.appendChild(opt);
+  });
+
+  const setores = [...new Set(empresas.map(e => e.setor))];
+  const setorFilter = document.getElementById('setorFilter');
+  setores.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s;
+    opt.textContent = s;
+    setorFilter.appendChild(opt);
+  });
+
+  renderPerfil();
+  filterEmpresas();
+}
+
+function filterEmpresas() {
+  const bairroId = document.getElementById('bairroFilter').value;
+  const setor = document.getElementById('setorFilter').value;
+
+  let filtered = empresas;
+  if (bairroId !== 'all') filtered = filtered.filter(e => e.bairro === bairroId);
+  if (setor !== 'all') filtered = filtered.filter(e => e.setor === setor);
+
+  document.getElementById('empresasList').innerHTML = filtered.map(e => {
+    const bairro = bairros.find(b => b.id === e.bairro);
+    const porteLabel = e.porte === 'MEI' ? 'badge-green' : e.porte === 'EPP' ? 'badge-blue' : 'badge-orange';
+    return `
+      <div class="card">
+        <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px;">
+          <h3>${e.nome}</h3>
+          <span class="badge ${porteLabel}">${e.porte}</span>
+        </div>
+        <p style="margin-bottom:4px;">📍 ${bairro ? bairro.nome : e.bairro}</p>
+        <p style="margin-bottom:4px;">📂 ${e.setor} • CNAE ${e.cnae}</p>
+        <p>👥 ${e.funcionarios} funcionários • Fundada em ${e.fundacao}</p>
+      </div>
+    `;
+  }).join('') || '<p style="grid-column:1/-1;text-align:center;color:var(--color-text-secondary);padding:40px;">Nenhuma empresa encontrada com esses filtros.</p>';
+}
+
+function renderPerfil() {
+  document.getElementById('perfilBody').innerHTML = bairros.map(b => {
+    const empresasNoBairro = empresas.filter(e => e.bairro === b.id);
+    const meis = empresasNoBairro.filter(e => e.porte === 'MEI').length;
+    const densidade = ((b.empresas / b.pop) * 1000).toFixed(1);
+    return `
+      <tr>
+        <td><strong>${b.nome}</strong></td>
+        <td>${formatNum(b.empresas)}</td>
+        <td>${meis} na amostra</td>
+        <td>${densidade}</td>
+        <td>${b.setores[0]}</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+init();
+</script>
+</body>
+</html>

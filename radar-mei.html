@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar do MEI — Grão Bairro Fortaleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="logo-icon">🏘️</span>
+      Grão Bairro
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="onde-abrir.html">Onde Abrir?</a></li>
+      <li><a href="termometro.html">Termômetro</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+      <li><a href="contracheque.html">Contracheque</a></li>
+      <li><a href="radar-mei.html">Radar MEI</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a> / Radar do MEI</div>
+    <h1>🎯 Radar do MEI</h1>
+    <p>Identifique nichos de mercado subatendidos e oportunidades de formalização em cada bairro de Fortaleza. Dados para microempreendedores individuais tomarem decisões informadas.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="stat-row" id="overviewStats"></div>
+
+  <div class="chart-box">
+    <h3>🔍 Nichos subatendidos por bairro</h3>
+    <p style="margin-bottom:16px;">Setores com alta demanda e baixa oferta de MEIs no bairro — oportunidades reais de negócio.</p>
+    <div id="nichosGrid"></div>
+  </div>
+
+  <div class="chart-box">
+    <h3>📈 Bairros com maior potencial para novos MEIs</h3>
+    <div id="potencialChart"></div>
+  </div>
+
+  <div class="chart-box">
+    <h3>💡 Ideias de negócio por perfil de bairro</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Perfil do bairro</th>
+          <th>Exemplos</th>
+          <th>Ideias de MEI</th>
+          <th>Investimento inicial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>🏙️ Centro comercial</strong></td>
+          <td>Centro, Aldeota, Parangaba</td>
+          <td>Serviços de entregas, manutenção de equipamentos, food truck</td>
+          <td>R$ 2.000 — 8.000</td>
+        </tr>
+        <tr>
+          <td><strong>🌆 Expansão residencial</strong></td>
+          <td>José Walter, Messejana, Mondubim</td>
+          <td>Construção civil, jardinagem, salão de beleza, depósito de água/gás</td>
+          <td>R$ 1.500 — 5.000</td>
+        </tr>
+        <tr>
+          <td><strong>🏖️ Turismo e lazer</strong></td>
+          <td>Meireles, Barra do Ceará</td>
+          <td>Guia turístico, artesanato, aluguel de equipamentos de praia</td>
+          <td>R$ 500 — 3.000</td>
+        </tr>
+        <tr>
+          <td><strong>🏗️ Periferia em crescimento</strong></td>
+          <td>Bom Jardim, Barra do Ceará</td>
+          <td>Mercadinho de bairro, barbearia, assistência técnica de celulares</td>
+          <td>R$ 1.000 — 4.000</td>
+        </tr>
+        <tr>
+          <td><strong>💻 Polo tech e serviços</strong></td>
+          <td>Varjota, Papicu, Edson Queiroz</td>
+          <td>Design gráfico, social media, desenvolvimento web, consultoria</td>
+          <td>R$ 500 — 2.000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <section class="section">
+    <h2 class="section-title">📋 Checklist para abrir seu MEI no bairro certo</h2>
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));">
+      <div class="card">
+        <h3>1. Estude o bairro</h3>
+        <p>Use o Termômetro e o Contracheque para entender renda, crescimento e concorrência.</p>
+      </div>
+      <div class="card">
+        <h3>2. Encontre o nicho</h3>
+        <p>Identifique setores subatendidos onde há demanda mas pouca oferta.</p>
+      </div>
+      <div class="card">
+        <h3>3. Valide com moradores</h3>
+        <p>Converse com 5-10 moradores. Pergunte se usariam seu serviço.</p>
+      </div>
+      <div class="card">
+        <h3>4. Formalize-se</h3>
+        <p>CNPJ MEI é gratuito. Acesse gov.br/mei e abra em 10 minutos.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="info-box">
+      <strong>📊 Fontes e metodologia</strong><br>
+      Análise baseada em: <strong>RAIS 2024</strong> (distribuição de MEIs por CNAE), <strong>Censo IBGE 2022</strong> (população e domicílios), <strong>CAGED</strong> (saldo de empregos). Nichos subatendidos são identificados por baixa densidade de MEIs no setor em relação à demanda potencial da população local.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Grão Bairro Fortaleza — Protótipo Acadêmico • UNIFOR 2026.1</p>
+    <span class="ods-badge">🎯 ODS 8 — Trabalho Decente e Crescimento Econômico</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+let bairros, indicadores;
+
+const nichos = [
+  { bairro: 'José Walter', setor: 'Beleza e Estética', demanda: 'Alta', oferta: 'Baixa', score: 94, motivo: 'População jovem, apenas 2 salões para 48k habitantes' },
+  { bairro: 'Bom Jardim', setor: 'Alimentação', demanda: 'Alta', oferta: 'Média', score: 88, motivo: '98k habitantes, baixa densidade de restaurantes por pessoa' },
+  { bairro: 'Barra do Ceará', setor: 'Turismo', demanda: 'Crescente', oferta: 'Baixa', score: 85, motivo: 'Turismo em crescimento, poucos serviços de guia e artesanato' },
+  { bairro: 'Mondubim', setor: 'Logística', demanda: 'Alta', oferta: 'Baixa', score: 83, motivo: 'Polo industrial, empresas precisam de entregadores e motoboys' },
+  { bairro: 'Messejana', setor: 'Educação', demanda: 'Alta', oferta: 'Média', score: 81, motivo: '115k habitantes, apenas 3 escolas infantis particulares' },
+  { bairro: 'Parangaba', setor: 'Saúde', demanda: 'Média-Alta', oferta: 'Baixa', score: 78, motivo: '43k habitantes, falta de clínicas odontológicas e fisioterapia' },
+  { bairro: 'Centro', setor: 'Tecnologia', demanda: 'Crescente', oferta: 'Baixa', score: 76, motivo: 'Empresas do centro precisam de serviços de TI e manutenção' },
+  { bairro: 'Aldeota', setor: 'Pet Care', demanda: 'Alta', oferta: 'Média', score: 74, motivo: 'Renda alta, muitos pets, poucos pet shops por km²' },
+];
+
+async function init() {
+  [bairros, indicadores] = await Promise.all([
+    loadData('data/bairros.json'),
+    loadData('data/indicadores.json')
+  ]);
+  if (!bairros || !indicadores) return;
+
+  document.getElementById('overviewStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">MEIs ativos em Fortaleza</div><div class="stat-value">${formatNum(indicadores.fortaleza.meis_ativos)}</div></div>
+    <div class="stat-card"><div class="stat-label">Oportunidades identificadas</div><div class="stat-value">${nichos.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Bairros analisados</div><div class="stat-value">${bairros.length}</div></div>
+    <div class="stat-card"><div class="stat-label">Score médio</div><div class="stat-value">${Math.round(nichos.reduce((s, n) => s + n.score, 0) / nichos.length)}/100</div></div>
+  `;
+
+  renderNichos();
+  renderPotencial();
+}
+
+function renderNichos() {
+  document.getElementById('nichosGrid').innerHTML = `
+    <div class="card-grid" style="grid-template-columns:repeat(auto-fill, minmax(300px, 1fr));">
+      ${nichos.map(n => `
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span class="badge ${n.score >= 85 ? 'badge-green' : n.score >= 80 ? 'badge-blue' : 'badge-orange'}">Score ${n.score}</span>
+            <span style="font-size:0.8rem;color:var(--color-text-secondary);">${n.bairro}</span>
+          </div>
+          <h3>${n.setor}</h3>
+          <p style="margin-bottom:4px;">📊 Demanda: <strong>${n.demanda}</strong> • Oferta: <strong>${n.oferta}</strong></p>
+          <p>${n.motivo}</p>
+        </div>
+      `).join('')}
+    </div>`;
+}
+
+function renderPotencial() {
+  const sorted = [...bairros].sort((a, b) => b.crescimento - a.crescimento);
+  document.getElementById('potencialChart').innerHTML = sorted.map((b, i) => {
+    const pct = Math.min(b.crescimento / 7 * 100, 100);
+    return `
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:0.75rem;color:var(--color-text-secondary);width:20px;">#${i+1}</span>
+        <span style="font-size:0.85rem;width:120px;text-align:right;">${b.nome}</span>
+        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:24px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${i === 0 ? 'var(--color-green)' : 'var(--color-accent)'};border-radius:4px;display:flex;align-items:center;padding-left:8px;">
+            <span style="font-size:0.7rem;color:white;font-weight:600;">${formatPct(b.crescimento)} ao ano</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+init();
+</script>
+</body>
+</html>

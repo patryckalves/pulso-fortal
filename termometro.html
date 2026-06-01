@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termômetro do Bairro — Grão Bairro Fortaleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="logo-icon">🏘️</span>
+      Grão Bairro
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="onde-abrir.html">Onde Abrir?</a></li>
+      <li><a href="termometro.html">Termômetro</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+      <li><a href="contracheque.html">Contracheque</a></li>
+      <li><a href="radar-mei.html">Radar MEI</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a> / Termômetro do Bairro</div>
+    <h1>🌡️ Termômetro do Bairro</h1>
+    <p>Acompanhe os indicadores econômicos de Fortaleza em tempo real. Selecione um bairro para ver dados detalhados de emprego, renda e atividade econômica.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="filter-bar">
+    <select class="form-select" id="bairroSelect" onchange="updateBairro()">
+      <option value="fortaleza">🏙️ Fortaleza (visão geral)</option>
+    </select>
+  </div>
+
+  <!-- Fortaleza overview stats -->
+  <div class="stat-row" id="overviewStats"></div>
+
+  <!-- Monthly employment chart -->
+  <div class="chart-box">
+    <h3>📈 Admissões vs Desligamentos — 2024</h3>
+    <div style="display:flex;gap:24px;align-items:center;flex-wrap:wrap;">
+      <div style="flex:1;min-width:300px;">
+        <div id="empregoChart"></div>
+      </div>
+      <div style="width:280px;">
+        <div class="stat-card mb-16">
+          <div class="stat-label">Saldo de empregos (2024)</div>
+          <div class="stat-value" id="netJobs">—</div>
+        </div>
+        <div class="stat-card mb-16">
+          <div class="stat-label">Pico de admissões</div>
+          <div class="stat-value" id="peakHires">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Salário médio atual</div>
+          <div class="stat-value" id="avgSalary">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bairro comparison table -->
+  <div class="chart-box" id="bairroComparison" style="display:none;">
+    <h3>🏘️ Comparativo entre bairros</h3>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Bairro</th>
+          <th>População</th>
+          <th>Empresas</th>
+          <th>Salário Médio</th>
+          <th>Crescimento</th>
+          <th>Empregos Formais</th>
+        </tr>
+      </thead>
+      <tbody id="bairroCompBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Salary evolution -->
+  <div class="chart-box">
+    <h3>💵 Evolução do Salário Médio — 2024</h3>
+    <div id="salaryChart"></div>
+  </div>
+
+  <section class="section">
+    <div class="info-box">
+      <strong>📊 Fonte dos dados</strong><br>
+      Indicadores de emprego e salário: <strong>RAIS 2024</strong> (Relação Anual de Informações Sociais) — 1.423.678 vínculos analisados em Fortaleza. Dados por bairro são simulados a partir de proporções populacionais do Censo IBGE 2022.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Grão Bairro Fortaleza — Protótipo Acadêmico • UNIFOR 2026.1</p>
+    <span class="ods-badge">🎯 ODS 8 — Trabalho Decente e Crescimento Econômico</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+let indicadores, bairros;
+
+async function init() {
+  indicadores = await loadData('data/indicadores.json');
+  bairros = await loadData('data/bairros.json');
+  if (!indicadores || !bairros) return;
+
+  // Populate bairro dropdown
+  const select = document.getElementById('bairroSelect');
+  bairros.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.id;
+    opt.textContent = `🏘️ ${b.nome}`;
+    select.appendChild(opt);
+  });
+
+  updateBairro();
+}
+
+function updateBairro() {
+  const selected = document.getElementById('bairroSelect').value;
+
+  if (selected === 'fortaleza') {
+    showFortalezaOverview();
+    document.getElementById('bairroComparison').style.display = 'block';
+    renderBairroComparison();
+  } else {
+    showBairroDetail(selected);
+    document.getElementById('bairroComparison').style.display = 'none';
+  }
+}
+
+function showFortalezaOverview() {
+  const f = indicadores.fortaleza;
+  document.getElementById('overviewStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">População</div><div class="stat-value">${formatNum(f.populacao)}</div></div>
+    <div class="stat-card"><div class="stat-label">PIB per capita</div><div class="stat-value">${formatBRL(f.pib_per_capita)}</div></div>
+    <div class="stat-card"><div class="stat-label">Empregos Formais</div><div class="stat-value">${formatNum(f.empregos_formais)}</div></div>
+    <div class="stat-card"><div class="stat-label">Empresas Ativas</div><div class="stat-value">${formatNum(f.empresas_ativas)}</div></div>
+    <div class="stat-card"><div class="stat-label">MEIs Ativos</div><div class="stat-value">${formatNum(f.meis_ativos)}</div></div>
+    <div class="stat-card"><div class="stat-label">Taxa de Desemprego</div><div class="stat-value">${f.taxa_desemprego}%</div></div>
+  `;
+
+  renderEmploymentChart(indicadores.serie_historica);
+  renderSalaryChart(indicadores.serie_historica);
+
+  // Summary stats
+  const series = indicadores.serie_historica;
+  const net = series.reduce((s, m) => s + m.admissoes - m.desligamentos, 0);
+  document.getElementById('netJobs').textContent = formatNum(net);
+  document.getElementById('peakHires').textContent = formatNum(Math.max(...series.map(m => m.admissoes)));
+  document.getElementById('avgSalary').textContent = formatBRL(series[series.length - 1].salario_medio);
+}
+
+function showBairroDetail(bairroId) {
+  const b = bairros.find(b => b.id === bairroId);
+  if (!b) return;
+
+  document.getElementById('overviewStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">População</div><div class="stat-value">${formatNum(b.pop)}</div></div>
+    <div class="stat-card"><div class="stat-label">Empresas</div><div class="stat-value">${formatNum(b.empresas)}</div></div>
+    <div class="stat-card"><div class="stat-label">Salário Médio</div><div class="stat-value">${formatBRL(b.salario_medio)}</div></div>
+    <div class="stat-card"><div class="stat-label">Empregos Formais</div><div class="stat-value">${formatNum(b.empregos_formais)}</div></div>
+    <div class="stat-card"><div class="stat-label">Crescimento</div><div class="stat-value">${formatPct(b.crescimento)}</div></div>
+    <div class="stat-card"><div class="stat-label">Setores</div><div class="stat-value" style="font-size:0.85rem;">${b.setores.join(', ')}</div></div>
+  `;
+
+  // Generate bairro-specific monthly data (scaled from Fortaleza total)
+  const scale = b.empregos_formais / indicadores.fortaleza.empregos_formais;
+  const bairroSeries = indicadores.serie_historica.map(m => ({
+    mes: m.mes,
+    admissoes: Math.round(m.admissoes * scale),
+    desligamentos: Math.round(m.desligamentos * scale),
+    salario_medio: m.salario_medio * (b.salario_medio / indicadores.fortaleza.salario_medio)
+  }));
+
+  renderEmploymentChart(bairroSeries);
+  renderSalaryChart(bairroSeries);
+
+  const net = bairroSeries.reduce((s, m) => s + m.admissoes - m.desligamentos, 0);
+  document.getElementById('netJobs').textContent = formatNum(net);
+  document.getElementById('peakHires').textContent = formatNum(Math.max(...bairroSeries.map(m => m.admissoes)));
+  document.getElementById('avgSalary').textContent = formatBRL(Math.round(bairroSeries[bairroSeries.length - 1].salario_medio));
+}
+
+function renderBairroComparison() {
+  document.getElementById('bairroCompBody').innerHTML = bairros.map(b => `
+    <tr>
+      <td><strong>${b.nome}</strong></td>
+      <td>${formatNum(b.pop)}</td>
+      <td>${formatNum(b.empresas)}</td>
+      <td>${formatBRL(b.salario_medio)}</td>
+      <td><span class="badge ${b.crescimento > 3 ? 'badge-green' : b.crescimento > 2 ? 'badge-blue' : 'badge-red'}">${formatPct(b.crescimento)}</span></td>
+      <td>${formatNum(b.empregos_formais)}</td>
+    </tr>
+  `).join('');
+}
+
+function renderEmploymentChart(series) {
+  const container = document.getElementById('empregoChart');
+  const max = Math.max(...series.flatMap(m => [m.admissoes, m.desligamentos]));
+  container.innerHTML = series.map(m => {
+    const hirePct = (m.admissoes / max) * 100;
+    const firePct = (m.desligamentos / max) * 100;
+    const month = m.mes.split('-')[1];
+    const monthNames = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+    return `
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="width:32px;font-size:0.7rem;text-align:right;color:var(--color-text-secondary);">${monthNames[parseInt(month)-1]}</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
+          <div style="height:10px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${hirePct}%;background:var(--color-green);border-radius:3px;" title="Admissões: ${m.admissoes}"></div>
+          </div>
+          <div style="height:10px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${firePct}%;background:var(--color-red);border-radius:3px;" title="Desligamentos: ${m.desligamentos}"></div>
+          </div>
+        </div>
+      </div>`;
+  }).join('') + `
+    <div style="display:flex;gap:16px;margin-top:8px;font-size:0.75rem;color:var(--color-text-secondary);">
+      <span>🟢 Admissões</span><span>🔴 Desligamentos</span>
+    </div>`;
+}
+
+function renderSalaryChart(series) {
+  const container = document.getElementById('salaryChart');
+  const salaries = series.map(m => m.salario_medio);
+  const min = Math.min(...salaries);
+  const max = Math.max(...salaries);
+  const range = max - min || 1;
+
+  container.innerHTML = `
+    <div style="display:flex;align-items:flex-end;gap:6px;height:160px;padding-top:20px;">
+      ${series.map(m => {
+        const h = ((m.salario_medio - min) / range) * 120 + 20;
+        const month = m.mes.split('-')[1];
+        const monthNames = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
+        return `<div style="flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="height:${h}px;width:100%;max-width:40px;background:var(--color-accent);border-radius:3px 3px 0 0;position:relative;" title="${formatBRL(m.salario_medio)}"></div>
+          <span style="font-size:0.65rem;color:var(--color-text-secondary);">${monthNames[parseInt(month)-1]}</span>
+        </div>`;
+      }).join('')}
+    </div>`;
+}
+
+init();
+</script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+[
+  {
+    "nome": "Padaria Pão Dourado",
+    "bairro": "centro",
+    "cnae": "4721-1/02",
+    "setor": "Alimentação",
+    "porte": "ME",
+    "funcionarios": 8,
+    "fundacao": "2019"
+  },
+  {
+    "nome": "TechNordeste Soluções",
+    "bairro": "varjota",
+    "cnae": "6201-5/01",
+    "setor": "Tecnologia",
+    "porte": "EPP",
+    "funcionarios": 32,
+    "fundacao": "2017"
+  },
+  {
+    "nome": "Farmácia Bem Estar",
+    "bairro": "messejana",
+    "cnae": "4771-7/01",
+    "setor": "Saúde",
+    "porte": "ME",
+    "funcionarios": 6,
+    "fundacao": "2020"
+  },
+  {
+    "nome": "Restaurante Sabor Cearense",
+    "bairro": "meireles",
+    "cnae": "5611-2/01",
+    "setor": "Gastronomia",
+    "porte": "ME",
+    "funcionarios": 12,
+    "fundacao": "2018"
+  },
+  {
+    "nome": "ConstruForte Materiais",
+    "bairro": "jose-walter",
+    "cnae": "4744-0/01",
+    "setor": "Construção",
+    "porte": "ME",
+    "funcionarios": 15,
+    "fundacao": "2016"
+  },
+  {
+    "nome": "Oficina Mecânica Zé",
+    "bairro": "mondubim",
+    "cnae": "4520-0/01",
+    "setor": "Automotivo",
+    "porte": "MEI",
+    "funcionarios": 3,
+    "fundacao": "2021"
+  },
+  {
+    "nome": "Escola Infantil Aprender",
+    "bairro": "parangaba",
+    "cnae": "8511-2/00",
+    "setor": "Educação",
+    "porte": "ME",
+    "funcionarios": 18,
+    "fundacao": "2015"
+  },
+  {
+    "nome": "Salão Beleza Pura",
+    "bairro": "aldeota",
+    "cnae": "9602-5/01",
+    "setor": "Beleza",
+    "porte": "MEI",
+    "funcionarios": 4,
+    "fundacao": "2019"
+  },
+  {
+    "nome": "Supermercado Bom Preço",
+    "bairro": "bom-jardim",
+    "cnae": "4711-3/02",
+    "setor": "Comércio",
+    "porte": "EPP",
+    "funcionarios": 45,
+    "fundacao": "2010"
+  },
+  {
+    "nome": "Bar e Petiscaria Raiz",
+    "bairro": "barra-do-ceara",
+    "cnae": "5611-2/01",
+    "setor": "Gastronomia",
+    "porte": "MEI",
+    "funcionarios": 2,
+    "fundacao": "2022"
+  },
+  {
+    "nome": "Contabilidade Exata",
+    "bairro": "papicu",
+    "cnae": "6920-6/01",
+    "setor": "Serviços",
+    "porte": "ME",
+    "funcionarios": 9,
+    "fundacao": "2014"
+  },
+  {
+    "nome": "Clínica Saúde Plena",
+    "bairro": "edson-queiroz",
+    "cnae": "8630-5/03",
+    "setor": "Saúde",
+    "porte": "EPP",
+    "funcionarios": 28,
+    "fundacao": "2012"
+  }
+]

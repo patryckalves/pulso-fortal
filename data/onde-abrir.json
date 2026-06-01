@@ -1,0 +1,105 @@
+{
+  "analise_por_setor": [
+    {
+      "setor": "Alimentação",
+      "bairros_recomendados": [
+        {
+          "bairro": "Centro",
+          "score": 92,
+          "motivo": "Alta circulação, baixa concorrência de padarias artesanais"
+        },
+        {
+          "bairro": "Messejana",
+          "score": 88,
+          "motivo": "População grande, poucos restaurantes por habitante"
+        },
+        {
+          "bairro": "Barra do Ceará",
+          "score": 82,
+          "motivo": "Turismo em crescimento, oferta gastronômica limitada"
+        }
+      ]
+    },
+    {
+      "setor": "Tecnologia",
+      "bairros_recomendados": [
+        {
+          "bairro": "Varjota",
+          "score": 95,
+          "motivo": "Hub tech consolidado, renda alta, ecossistema de startups"
+        },
+        {
+          "bairro": "Aldeota",
+          "score": 84,
+          "motivo": "Proximidade com clientes corporativos e coworkings"
+        },
+        {
+          "bairro": "Papicu",
+          "score": 77,
+          "motivo": "Em crescimento, custo de aluguel 40% menor que Varjota"
+        }
+      ]
+    },
+    {
+      "setor": "Beleza e Estética",
+      "bairros_recomendados": [
+        {
+          "bairro": "Aldeota",
+          "score": 91,
+          "motivo": "Público com maior renda disponível, densidade de salões abaixo da média"
+        },
+        {
+          "bairro": "Meireles",
+          "score": 86,
+          "motivo": "Turistas e moradores de alta renda, tendência de crescimento"
+        },
+        {
+          "bairro": "José Walter",
+          "score": 79,
+          "motivo": "Concorrência baixa, população jovem, mercado subatendido"
+        }
+      ]
+    },
+    {
+      "setor": "Comércio Varejista",
+      "bairros_recomendados": [
+        {
+          "bairro": "Messejana",
+          "score": 94,
+          "motivo": "Maior população, renda em crescimento, shopping center atrai fluxo"
+        },
+        {
+          "bairro": "Bom Jardim",
+          "score": 89,
+          "motivo": "População densa, poucas opções de varejo diversificado"
+        },
+        {
+          "bairro": "Parangaba",
+          "score": 85,
+          "motivo": "Polo comercial tradicional, terminal de transporte integrado"
+        }
+      ]
+    },
+    {
+      "setor": "Construção Civil",
+      "bairros_recomendados": [
+        {
+          "bairro": "José Walter",
+          "score": 93,
+          "motivo": "Maior crescimento populacional, muitas obras residenciais"
+        },
+        {
+          "bairro": "Mondubim",
+          "score": 88,
+          "motivo": "Expansão industrial e logística, demanda por galpões"
+        },
+        {
+          "bairro": "Bom Jardim",
+          "score": 84,
+          "motivo": "Densidade alta, imóveis antigos, reformas constantes"
+        }
+      ]
+    }
+  ],
+  "metodologia": "Análise multivariada combinando: densidade populacional (IBGE 2022), salário médio (RAIS 2024), número de empresas por CNAE (Brasil API), taxa de crescimento do emprego (CAGED), e circulação de pessoas (dados de transporte público ETUFOR)."
+}

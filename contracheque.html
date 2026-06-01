@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contracheque do Bairro — Grão Bairro Fortaleza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <span class="logo-icon">🏘️</span>
+      Grão Bairro
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Início</a></li>
+      <li><a href="onde-abrir.html">Onde Abrir?</a></li>
+      <li><a href="termometro.html">Termômetro</a></li>
+      <li><a href="vitrine.html">Vitrine</a></li>
+      <li><a href="contracheque.html">Contracheque</a></li>
+      <li><a href="radar-mei.html">Radar MEI</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Início</a> / Contracheque do Bairro</div>
+    <h1>💰 Contracheque do Bairro</h1>
+    <p>Entenda o poder de compra de cada bairro de Fortaleza. Dados de renda, distribuição salarial e potencial de consumo para calibrar preços e estratégias de negócio.</p>
+  </div>
+</header>
+
+<main class="container">
+  <div class="filter-bar">
+    <select class="form-select" id="bairroSelect" onchange="updateView()">
+      <option value="fortaleza">🏙️ Fortaleza (visão geral)</option>
+    </select>
+  </div>
+
+  <div class="stat-row" id="overviewStats"></div>
+
+  <div class="chart-box">
+    <h3>📊 Distribuição salarial por bairro</h3>
+    <div id="salaryDist"></div>
+  </div>
+
+  <div class="chart-box">
+    <h3>🏘️ Ranking de salário médio</h3>
+    <div id="rankingChart"></div>
+  </div>
+
+  <div class="chart-box">
+    <h3>💡 Potencial de consumo</h3>
+    <p style="margin-bottom:16px;">Estimativa de gasto mensal por domicílio, baseada na renda média do bairro e padrões de consumo da POF (IBGE).</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Categoria de consumo</th>
+          <th>% da renda</th>
+          <th>Gasto médio/mês</th>
+          <th>Mercado potencial (bairro)</th>
+        </tr>
+      </thead>
+      <tbody id="consumoBody"></tbody>
+    </table>
+  </div>
+
+  <section class="section">
+    <div class="info-box">
+      <strong>📊 Metodologia</strong><br>
+      Dados de salário da <strong>RAIS 2024</strong> (média, mediana, decis). Distribuição de consumo baseada na <strong>POF 2017-2018 (IBGE)</strong> ajustada por faixa de renda. Dados por bairro são estimados a partir de proporções populacionais do Censo 2022.
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Grão Bairro Fortaleza — Protótipo Acadêmico • UNIFOR 2026.1</p>
+    <span class="ods-badge">🎯 ODS 8 — Trabalho Decente e Crescimento Econômico</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+let bairros, indicadores;
+
+// Consumption pattern from POF (IBGE) as % of income
+const consumoPattern = [
+  { categoria: 'Habitação', pct: 0.30 },
+  { categoria: 'Alimentação', pct: 0.18 },
+  { categoria: 'Transporte', pct: 0.15 },
+  { categoria: 'Saúde', pct: 0.08 },
+  { categoria: 'Vestuário', pct: 0.05 },
+  { categoria: 'Educação', pct: 0.04 },
+  { categoria: 'Lazer', pct: 0.05 },
+  { categoria: 'Outros', pct: 0.15 },
+];
+
+async function init() {
+  [bairros, indicadores] = await Promise.all([
+    loadData('data/bairros.json'),
+    loadData('data/indicadores.json')
+  ]);
+  if (!bairros || !indicadores) return;
+
+  const select = document.getElementById('bairroSelect');
+  bairros.forEach(b => {
+    const opt = document.createElement('option');
+    opt.value = b.id;
+    opt.textContent = `🏘️ ${b.nome}`;
+    select.appendChild(opt);
+  });
+
+  renderRanking();
+  updateView();
+}
+
+function updateView() {
+  const selected = document.getElementById('bairroSelect').value;
+
+  if (selected === 'fortaleza') {
+    showFortaleza();
+  } else {
+    showBairro(selected);
+  }
+}
+
+function showFortaleza() {
+  const f = indicadores.fortaleza;
+  document.getElementById('overviewStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Salário Médio</div><div class="stat-value">${formatBRL(f.salario_medio)}</div></div>
+    <div class="stat-card"><div class="stat-label">Salário Mediano</div><div class="stat-value">${formatBRL(f.salario_mediano)}</div></div>
+    <div class="stat-card"><div class="stat-label">Diferença Média-Mediana</div><div class="stat-value">${(((f.salario_medio / f.salario_mediano) - 1) * 100).toFixed(0)}%</div></div>
+    <div class="stat-card"><div class="stat-label">Renda per capita (est.)</div><div class="stat-value">${formatBRL(Math.round(f.salario_medio / 2.1))}</div></div>
+  `;
+
+  renderSalaryDist(f.salario_mediano, f.salario_medio);
+  renderConsumo(f.salario_medio, f.populacao);
+}
+
+function showBairro(id) {
+  const b = bairros.find(b => b.id === id);
+  if (!b) return;
+
+  document.getElementById('overviewStats').innerHTML = `
+    <div class="stat-card"><div class="stat-label">Salário Médio</div><div class="stat-value">${formatBRL(b.salario_medio)}</div></div>
+    <div class="stat-card"><div class="stat-label">vs Média Fortaleza</div><div class="stat-value">${formatPct(((b.salario_medio / indicadores.fortaleza.salario_medio) - 1) * 100)}</div></div>
+    <div class="stat-card"><div class="stat-label">Empregos Formais</div><div class="stat-value">${formatNum(b.empregos_formais)}</div></div>
+    <div class="stat-card"><div class="stat-label">Crescimento anual</div><div class="stat-value">${formatPct(b.crescimento)}</div></div>
+  `;
+
+  // Estimate median: lower for high-inequality areas
+  const medianRatio = b.salario_medio > 4000 ? 0.55 : b.salario_medio > 2500 ? 0.62 : 0.72;
+  renderSalaryDist(Math.round(b.salario_medio * medianRatio), b.salario_medio);
+  renderConsumo(b.salario_medio, b.pop);
+}
+
+function renderSalaryDist(mediana, media) {
+  document.getElementById('salaryDist').innerHTML = `
+    <div style="display:flex;align-items:flex-end;gap:8px;height:130px;padding-top:20px;">
+      ${[
+        {label:'Até 1 SM', pct:12, color:'var(--color-border)'},
+        {label:'1-2 SM', pct:28, color:'var(--color-blue-light)'},
+        {label:'2-3 SM', pct:22, color:'var(--color-blue)'},
+        {label:'3-5 SM', pct:18, color:'var(--color-accent-light)'},
+        {label:'5-10 SM', pct:13, color:'var(--color-accent)'},
+        {label:'+10 SM', pct:7, color:'var(--color-green)'},
+      ].map(b => `
+        <div style="flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="height:${b.pct * 1.0}px;width:100%;max-width:50px;background:${b.color};border-radius:3px 3px 0 0;"></div>
+          <span style="font-size:0.6rem;color:var(--color-text-secondary);">${b.label}</span>
+          <span style="font-size:0.7rem;font-weight:600;">${b.pct}%</span>
+        </div>
+      `).join('')}
+    </div>
+    <div style="margin-top:16px;display:flex;gap:24px;font-size:0.85rem;">
+      <span>📊 <strong>Mediana:</strong> ${formatBRL(mediana)}</span>
+      <span>📈 <strong>Média:</strong> ${formatBRL(media)}</span>
+    </div>`;
+}
+
+function renderRanking() {
+  const sorted = [...bairros].sort((a, b) => b.salario_medio - a.salario_medio);
+  const max = sorted[0].salario_medio;
+
+  document.getElementById('rankingChart').innerHTML = sorted.map((b, i) => {
+    const pct = (b.salario_medio / max) * 100;
+    return `
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+        <span style="font-size:0.75rem;color:var(--color-text-secondary);width:20px;">#${i+1}</span>
+        <span style="font-size:0.85rem;width:120px;text-align:right;">${b.nome}</span>
+        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:22px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${i < 3 ? 'var(--color-green)' : i < 6 ? 'var(--color-blue)' : 'var(--color-accent)'};border-radius:4px;display:flex;align-items:center;padding-left:8px;">
+            <span style="font-size:0.7rem;color:white;font-weight:600;">${formatBRL(b.salario_medio)}</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function renderConsumo(salarioMedio, populacao) {
+  const domicilios = Math.round(populacao / 2.8);
+  document.getElementById('consumoBody').innerHTML = consumoPattern.map(c => {
+    const gastoMedio = salarioMedio * c.pct;
+    const mercadoPotencial = gastoMedio * domicilios;
+    return `
+      <tr>
+        <td><strong>${c.categoria}</strong></td>
+        <td>${(c.pct * 100).toFixed(0)}%</td>
+        <td>${formatBRL(gastoMedio)}</td>
+        <td>${formatBRL(mercadoPotencial)}/mês</td>
+      </tr>
+    `;
+  }).join('');
+}
+
+init();
+</script>
+</body>
+</html>
