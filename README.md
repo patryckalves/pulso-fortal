@@ -1,4 +1,4 @@
-# 🏘️ Grão Bairro Fortaleza
+# 🏘️ Pulso Fortal
 
 **Protótipo interativo de inteligência de bairros para microempreendedores**
 
@@ -10,7 +10,7 @@ Projeto acadêmico — UNIFOR 2026.1 — Atividade Final: Ideações para Soluç
 
 ## 🎯 O que é
 
-Grão Bairro transforma dados públicos (RAIS, IBGE, CAGED, Brasil API) em inteligência prática para quem quer empreender no bairro certo.
+Pulso Fortal transforma dados públicos (RAIS, IBGE, CAGED, Brasil API) em inteligência prática para quem quer empreender no bairro certo.
 
 ## 🛠️ Ferramentas
 
@@ -32,12 +32,12 @@ Grão Bairro transforma dados públicos (RAIS, IBGE, CAGED, Brasil API) em intel
 
 ## 🚀 Acesse
 
-O protótipo está disponível em: **[patryckalves.github.io/grao-bairro](https://patryckalves.github.io/grao-bairro/)**
+O protótipo está disponível em: **[patryckalves.github.io/pulso-fortal](https://patryckalves.github.io/pulso-fortal/)**
 
 ## 🏗️ Estrutura
 
 ```
-grao-bairro/
+pulso-fortal/
 ├── index.html              # Landing page
 ├── onde-abrir.html         # Recomendação de bairro por setor
 ├── termometro.html         # Indicadores econômicos
