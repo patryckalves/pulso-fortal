@@ -389,9 +389,9 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 
 1. **Tamanho da equipe (5 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
 
-2. **Tempo de deploy:** o deploy de um site estático no GitHub Pages é imediato (git push). Um deploy de microsserviços exigiria esteira de CI/CD, orquestração de containers e configuração de DNS — incompatível com o escopo de um MVP acadêmico.
+2. **Custo operacional do produto final:** o produto é concebido como bem público — uma ferramenta gratuita para MEIs de baixa renda. GitHub Pages tem custo zero perpétuo. Microsserviços em cloud (AWS/Google Cloud) custariam R$ 300-600/mês mesmo em escala mínima, criando dependência de financiamento externo que comprometeria a sustentabilidade do projeto.
 
-3. **Custo operacional zero:** GitHub Pages é gratuito. Não há servidores para manter, escalar ou monitorar. Para um produto voltado a MEIs — público de baixa renda — a sustentabilidade financeira da infraestrutura é crítica.
+3. **Desacoplamento para evolução:** a separação estrita entre camadas preserva o investimento no frontend quando o backend evoluir. O contrato de dados (JSON) é a interface estável entre elas — trocar dados estáticos por API dinâmica exige zero alteração no frontend.
 
 4. **Performance mobile:** arquivos estáticos em CDN carregam mais rápido que chamadas a APIs dinâmicas — essencial para usuários em 3G na periferia de Fortaleza (Nielsen, 1993 — Lei de Usabilidade: 0,1s para sensação de instantaneidade).
 
