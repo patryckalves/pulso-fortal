@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 620" width="700" height="620">
+  <defs>
+    <style>
+      text { font-family: Inter, sans-serif; }
+      .title { font-size: 13px; font-weight: 700; fill: #e8650a; }
+      .label { font-size: 11px; fill: #1a1a1a; }
+      .small { font-size: 9px; fill: #6b6b6b; }
+      .box-user { fill: #fef3e8; stroke: #e8650a; stroke-width: 2; rx: 8; }
+      .box-layer { fill: #ffffff; stroke: #e5e2db; stroke-width: 1.5; rx: 6; }
+      .box-component { fill: #f3f1ed; stroke: #d5d0c8; stroke-width: 1; rx: 4; }
+      .box-source { fill: #e8f5ee; stroke: #0a7c42; stroke-width: 1; rx: 4; }
+      .box-etl { fill: #e8f1fe; stroke: #1a56db; stroke-width: 1.5; rx: 4; }
+      .arrow { stroke: #6b6b6b; stroke-width: 1.5; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0,0 8,3 0,6" fill="#6b6b6b"/>
+    </marker>
+  </defs>
+
+  <!-- User -->
+  <rect x="230" y="10" width="240" height="50" class="box-user"/>
+  <text x="350" y="32" text-anchor="middle" class="title">USUÁRIO FINAL</text>
+  <text x="350" y="48" text-anchor="middle" class="small">microempreendedor, MEI</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="60" x2="350" y2="85" class="arrow"/>
+
+  <!-- Presentation Layer -->
+  <rect x="30" y="85" width="640" height="130" class="box-layer"/>
+  <text x="350" y="103" text-anchor="middle" class="title">CAMADA DE APRESENTAÇÃO</text>
+  <text x="350" y="117" text-anchor="middle" class="small">HTML5 + CSS3 + JavaScript Vanilla · GitHub Pages (CDN)</text>
+  
+  <rect x="50" y="130" width="110" height="40" class="box-component"/>
+  <text x="105" y="155" text-anchor="middle" class="label">🏠 Home</text>
+  <rect x="175" y="130" width="110" height="40" class="box-component"/>
+  <text x="230" y="155" text-anchor="middle" class="label">📍 Onde Abrir?</text>
+  <rect x="300" y="130" width="110" height="40" class="box-component"/>
+  <text x="355" y="155" text-anchor="middle" class="label">🌡️ Termômetro</text>
+  <rect x="425" y="130" width="110" height="40" class="box-component"/>
+  <text x="480" y="155" text-anchor="middle" class="label">🏪 Vitrine</text>
+  <rect x="550" y="130" width="100" height="40" class="box-component"/>
+  <text x="600" y="155" text-anchor="middle" class="label">🎯 Radar</text>
+
+  <rect x="50" y="180" width="600" height="28" class="box-component"/>
+  <text x="350" y="199" text-anchor="middle" class="label">📦 Contracheque do Bairro</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="215" x2="350" y2="240" class="arrow"/>
+
+  <!-- Data Layer -->
+  <rect x="30" y="240" width="640" height="80" class="box-layer"/>
+  <text x="350" y="258" text-anchor="middle" class="title">CAMADA DE DADOS (Estática)</text>
+  <rect x="180" y="268" width="340" height="40" class="box-component"/>
+  <text x="350" y="294" text-anchor="middle" class="label">data/*.json · pré-processado offline · sem dependência de servidor</text>
+
+  <!-- Arrow -->
+  <line x1="350" y1="320" x2="350" y2="345" class="arrow"/>
+
+  <!-- Processing Layer -->
+  <rect x="30" y="345" width="640" height="160" class="box-layer"/>
+  <text x="350" y="363" text-anchor="middle" class="title">CAMADA DE PROCESSAMENTO (Offline)</text>
+  <text x="350" y="377" text-anchor="middle" class="small">Pipeline Python (ETL)</text>
+
+  <rect x="55" y="390" width="130" height="45" class="box-source"/>
+  <text x="120" y="410" text-anchor="middle" class="label">RAIS</text>
+  <text x="120" y="426" text-anchor="middle" class="small">Parquet (1.4M)</text>
+  
+  <rect x="205" y="390" width="130" height="45" class="box-source"/>
+  <text x="270" y="410" text-anchor="middle" class="label">IBGE</text>
+  <text x="270" y="426" text-anchor="middle" class="small">API SIDRA</text>
+
+  <rect x="355" y="390" width="130" height="45" class="box-source"/>
+  <text x="420" y="410" text-anchor="middle" class="label">CAGED</text>
+  <text x="420" y="426" text-anchor="middle" class="small">FTP (mensal)</text>
+
+  <rect x="505" y="390" width="130" height="45" class="box-source"/>
+  <text x="570" y="410" text-anchor="middle" class="label">Brasil API</text>
+  <text x="570" y="426" text-anchor="middle" class="small">CNPJ → bairro</text>
+
+  <!-- ETL box -->
+  <rect x="200" y="448" width="300" height="40" class="box-etl"/>
+  <text x="350" y="473" text-anchor="middle" class="label">⚙️ ETL + Agregação → data/*.json</text>
+</svg>

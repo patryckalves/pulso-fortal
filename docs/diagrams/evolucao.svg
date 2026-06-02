@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 320" width="800" height="320">
+  <defs>
+    <style>
+      text { font-family: Inter, sans-serif; }
+      .title { font-size: 14px; font-weight: 700; fill: #e8650a; }
+      .subtitle { font-size: 11px; font-weight: 600; fill: #1a1a1a; }
+      .label { font-size: 10px; fill: #1a1a1a; }
+      .small { font-size: 8px; fill: #6b6b6b; }
+      .cost { font-size: 12px; font-weight: 700; fill: #0a7c42; }
+      .box-phase { fill: #ffffff; stroke: #e5e2db; stroke-width: 1.5; rx: 8; }
+      .box-comp { fill: #f3f1ed; stroke: #d5d0c8; stroke-width: 1; rx: 4; }
+      .box-comp2 { fill: #e8f1fe; stroke: #1a56db; stroke-width: 1; rx: 4; }
+      .box-comp3 { fill: #e8f5ee; stroke: #0a7c42; stroke-width: 1; rx: 4; }
+      .arrow-evol { stroke: #e8650a; stroke-width: 2; fill: none; marker-end: url(#arrowhead2); stroke-dasharray: 6,3; }
+      .line { stroke: #e5e2db; stroke-width: 1; }
+    </style>
+    <marker id="arrowhead2" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0,0 10,3.5 0,7" fill="#e8650a"/>
+    </marker>
+  </defs>
+
+  <!-- Phase 1 -->
+  <rect x="15" y="10" width="230" height="290" class="box-phase"/>
+  <text x="130" y="32" text-anchor="middle" class="title">FASE 1 · Atual</text>
+  <rect x="30" y="50" width="200" height="40" class="box-comp"/>
+  <text x="130" y="68" text-anchor="middle" class="subtitle">HTML/CSS/JS Vanilla</text>
+  <text x="130" y="82" text-anchor="middle" class="small">GitHub Pages (CDN)</text>
+  <rect x="30" y="100" width="200" height="40" class="box-comp"/>
+  <text x="130" y="118" text-anchor="middle" class="subtitle">JSON estático</text>
+  <text x="130" y="132" text-anchor="middle" class="small">pré-processado offline</text>
+  <rect x="30" y="150" width="200" height="40" class="box-comp"/>
+  <text x="130" y="168" text-anchor="middle" class="subtitle">Pipeline manual</text>
+  <text x="130" y="182" text-anchor="middle" class="small">Python ETL</text>
+  <rect x="60" y="220" width="140" height="35" class="box-comp3"/>
+  <text x="130" y="243" text-anchor="middle" class="cost">R$ 0 / mês</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="245" y1="155" x2="285" y2="155" class="arrow-evol"/>
+  <text x="265" y="145" text-anchor="middle" class="small" fill="#e8650a">frontend</text>
+  <text x="265" y="175" text-anchor="middle" class="small" fill="#e8650a">preservado</text>
+
+  <!-- Phase 2 -->
+  <rect x="285" y="10" width="230" height="290" class="box-phase"/>
+  <text x="400" y="32" text-anchor="middle" class="title">FASE 2 · +3 meses</text>
+  <rect x="300" y="50" width="200" height="40" class="box-comp"/>
+  <text x="400" y="68" text-anchor="middle" class="subtitle">HTML/CSS/JS Vanilla</text>
+  <text x="400" y="82" text-anchor="middle" class="small">Vercel (CDN)</text>
+  <rect x="300" y="100" width="200" height="40" class="box-comp2"/>
+  <text x="400" y="118" text-anchor="middle" class="subtitle">FastAPI</text>
+  <text x="400" y="132" text-anchor="middle" class="small">Docker · PostgreSQL</text>
+  <rect x="300" y="150" width="200" height="40" class="box-comp"/>
+  <text x="400" y="168" text-anchor="middle" class="subtitle">Pipeline cronjob</text>
+  <text x="400" y="182" text-anchor="middle" class="small">CAGED FTP + Brasil API</text>
+  <rect x="330" y="220" width="140" height="35" class="box-comp3"/>
+  <text x="400" y="243" text-anchor="middle" class="cost">~R$ 80 / mês</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="515" y1="155" x2="555" y2="155" class="arrow-evol"/>
+  <text x="535" y="145" text-anchor="middle" class="small" fill="#e8650a">+ canais de</text>
+  <text x="535" y="175" text-anchor="middle" class="small" fill="#e8650a">distribuição</text>
+
+  <!-- Phase 3 -->
+  <rect x="555" y="10" width="230" height="290" class="box-phase"/>
+  <text x="670" y="32" text-anchor="middle" class="title">FASE 3 · +6 meses</text>
+  <rect x="570" y="50" width="200" height="35" class="box-comp"/>
+  <text x="670" y="72" text-anchor="middle" class="subtitle">HTML/CSS/JS · Vercel</text>
+  <rect x="570" y="93" width="200" height="35" class="box-comp2"/>
+  <text x="670" y="115" text-anchor="middle" class="subtitle">FastAPI · Docker</text>
+  <rect x="570" y="136" width="200" height="35" class="box-comp"/>
+  <text x="670" y="158" text-anchor="middle" class="subtitle">Pipeline cronjob</text>
+  <rect x="570" y="180" width="95" height="35" class="box-comp3"/>
+  <text x="617" y="202" text-anchor="middle" class="small">Bot WhatsApp</text>
+  <rect x="673" y="180" width="95" height="35" class="box-comp3"/>
+  <text x="720" y="202" text-anchor="middle" class="small">Newsletter</text>
+  <rect x="620" y="220" width="140" height="35" class="box-comp3"/>
+  <text x="690" y="243" text-anchor="middle" class="cost">~R$ 200 / mês</text>
+</svg>

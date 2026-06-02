@@ -323,65 +323,15 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 
 **Arquitetura em Camadas (Layered Architecture)** com separação em três camadas, adequada ao escopo de validação:
 
-```
-┌─────────────────────────────────────────────────────────┐
-│              CAMADA DE APRESENTAÇÃO                      │
-│  HTML5 + CSS3 + JavaScript Vanilla                      │
-│  GitHub Pages (CDN) — deploy estático                   │
-│  6 páginas: Home, Onde Abrir, Termômetro, Vitrine,      │
-│             Contracheque, Radar MEI                     │
-├─────────────────────────────────────────────────────────┤
-│              CAMADA DE DADOS (Estática)                  │
-│  JSON pré-processado (bairros, indicadores, empresas)   │
-│  Gerado por pipeline Python offline                     │
-│  Sem dependência de servidor em runtime                 │
-├─────────────────────────────────────────────────────────┤
-│              CAMADA DE PROCESSAMENTO (Offline)           │
-│  Pipeline Python (ETL)                                  │
-│  Fontes: RAIS (Parquet), IBGE API, CAGED FTP,           │
-│          Brasil API, Fortaleza CKAN                     │
-│  Output: JSON estático para a camada de apresentação    │
-└─────────────────────────────────────────────────────────┘
-```
+![Diagrama de arquitetura do protótipo — arquitetura em 3 camadas](diagrams/arquitetura-prototipo.png)
+
+*Figura 6: Arquitetura do protótipo em 3 camadas — apresentação (HTML/CSS/JS), dados (JSON estático) e processamento (pipeline Python offline).*
 
 ## 6.2 Diagrama do Protótipo
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                        USUÁRIO FINAL                              │
-│                   (microempreendedor, MEI)                        │
-└────────────────────────────┬─────────────────────────────────────┘
-                             │
-                             ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                   GITHUB PAGES (CDN)                              │
-│            https://patryckalves.github.io/pulso-fortal/           │
-│                                                                    │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌─────────┐ │
-│  │  Home    │ │Onde Abrir│ │Termômetro│ │ Vitrine  │ │ Radar   │ │
-│  │ (landing)│ │ (score)  │ │(gráficos)│ │(empresas)│ │ (MEI)   │ │
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬────┘ │
-│       └────────────┴────────────┴────────────┴────────────┘       │
-│                             │                                      │
-│                    data/*.json (estático)                          │
-└────────────────────────────┬─────────────────────────────────────┘
-                             │
-                             │ gerado offline por:
-                             ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                 PIPELINE DE DADOS (Python)                        │
-│                                                                    │
-│  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐       │
-│  │  RAIS    │   │  IBGE    │   │  CAGED   │   │  Brasil  │       │
-│  │ (Parquet)│   │  (API)   │   │  (FTP)   │   │  API     │       │
-│  └────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘       │
-│       └──────────────┴──────────────┴──────────────┘              │
-│                             │                                      │
-│                     ETL + Agregação                                │
-│                             │                                      │
-│                     data/*.json                                    │
-└──────────────────────────────────────────────────────────────────┘
-```
+![Diagrama detalhado do protótipo — fluxo usuário → CDN → pipeline](diagrams/arquitetura-prototipo.png)
+
+*Figura 7: Diagrama detalhado do fluxo — usuário → GitHub Pages CDN → dados JSON estáticos → pipeline ETL offline.*
 
 ## 6.3 Justificativa e Caminho Evolutivo
 
@@ -420,61 +370,17 @@ A arquitetura do protótipo foi projetada como **protótipo evolutivo** — conc
 - Autenticação simples (login gov.br) para personalização por bairro
 - Custo estimado: ~R$ 200/mês (VPS + WhatsApp Business API)
 
-```
-FASE 1 (hoje)          FASE 2 (3 meses)         FASE 3 (6 meses)
-┌──────────────┐      ┌──────────────┐         ┌──────────────┐
-│ HTML/CSS/JS  │ ───→ │ HTML/CSS/JS  │  ───→   │ HTML/CSS/JS  │
-│ (GitHub Pages)│      │ (Vercel)     │         │ (Vercel)     │
-│              │      │              │         │              │
-│ JSON estático│      │ FastAPI      │         │ FastAPI      │
-│ (pré-pronto) │      │ (Docker)     │         │ (Docker)     │
-│              │      │              │         │              │
-│ Pipeline     │      │ Pipeline     │         │ Pipeline     │
-│ manual       │      │ cronjob      │         │ cronjob      │
-│              │      │              │         │              │
-│ R$ 0/mês     │      │ R$ 80/mês    │         │ R$ 200/mês   │
-│              │      │              │    ┌────┴─────────────┤
-│              │      │              │    │ Bot WhatsApp     │
-│              │      │              │    │ Newsletter       │
-│              │      │              │    │ Login gov.br     │
-└──────────────┘      └──────────────┘    └──────────────────┘
-```
+![Diagrama do caminho evolutivo — 3 fases do protótipo ao produto](diagrams/evolucao.png)
+
+*Figura 8: Caminho evolutivo em três fases — do protótipo estático (R$ 0/mês) ao produto multicanal (R$ 200/mês).*
 
 ## 6.4 Arquitetura-Alvo (Produto Final)
 
 Para a Fase 3, a arquitetura evolui para um modelo híbrido: **frontend estático + API em camadas + serviços desacoplados para distribuição**:
 
-```
-┌──────────────────────────────────────────────────────────────────┐
-│                     FRONTEND (Estático)                           │
-│  GitHub Pages / Vercel — mesmo código da Fase 1                  │
-└────────────────────────────┬─────────────────────────────────────┘
-                             │ HTTPS (fetch)
-                             ▼
-┌──────────────────────────────────────────────────────────────────┐
-│                     API Gateway (FastAPI)                         │
-│  /bairros/{id}  /indicadores  /empresas  /oportunidades          │
-└──────┬───────────────────────────────────────────────────────────┘
-       │
-       ▼
-┌──────────────────────────────────────────────────────────────────┐
-│              PostgreSQL + Redis (cache)                           │
-│  Mesmo schema do protótipo N688                                  │
-└──────┬───────────────────────────────────────────────────────────┘
-       │
-       ▼
-┌──────────────────────────────────────────────────────────────────┐
-│              Pipeline ETL (cronjob mensal)                       │
-│  RAIS + IBGE + CAGED FTP + Brasil API + Fortaleza CKAN           │
-└──────────────────────┬───────────────────────────────────────────┘
-                       │
-         ┌─────────────┴─────────────┐
-         ▼                           ▼
-┌─────────────────┐      ┌─────────────────────┐
-│ Bot WhatsApp    │      │ Newsletter Semanal   │
-│ (Twilio/Meta)   │      │ (gerada via API)     │
-└─────────────────┘      └─────────────────────┘
-```
+![Diagrama da arquitetura-alvo — produto final com frontend, API, banco de dados, pipeline e distribuição multicanal](diagrams/arquitetura-alvo.png)
+
+*Figura 9: Arquitetura-alvo para a Fase 3 — frontend estático preservado, API Gateway FastAPI, PostgreSQL, pipeline ETL e canais de distribuição (WhatsApp e Newsletter).*
 
 ## 6.5 Stack Tecnológica
 
