@@ -427,15 +427,44 @@ Inclusa na Seção 5 deste documento.
 
 # 8. Evidências e Relatório Final
 
-## 8.1 Evidências (Screenshots)
+## 8.1 Evidências
 
-*[Inserir 5+ prints das telas do protótipo]*
+### Protótipo Online
 
-1. Home — Landing page com estatísticas de Fortaleza
-2. Onde Abrir? — Filtro "Alimentação" com ranking de bairros
-3. Termômetro — Gráficos de admissão/desligamento com seletor de bairro
-4. Contracheque — Ranking salarial com potencial de consumo
-5. Radar MEI — Nichos subatendidos com scores
+O protótipo completo está publicado e funcional em:
+
+**https://patryckalves.github.io/pulso-fortal/**
+
+### Screenshots das Telas Principais
+
+![Home — Landing page com estatísticas de Fortaleza](prints/home.png)
+
+*Figura 1: Tela inicial com estatísticas agregadas (998.708 empregos formais, 85.000 empresas ativas, salário médio R$ 3.119) e cards de navegação.*
+
+![Onde Abrir? — Filtro por setor com ranking de bairros](prints/onde-abrir.png)
+
+*Figura 2: Ferramenta "Onde Abrir?" com filtro de setor e scores de recomendação por bairro.*
+
+![Termômetro do Bairro — Gráficos de admissão/desligamento](prints/termometro.png)
+
+*Figura 3: Termômetro com seletor de bairro, indicadores e gráfico de admissões vs desligamentos.*
+
+![Contracheque do Bairro — Ranking salarial](prints/contracheque.png)
+
+*Figura 4: Contracheque com distribuição salarial, ranking de bairros e potencial de consumo.*
+
+![Radar do MEI — Nichos subatendidos](prints/radar-mei.png)
+
+*Figura 5: Radar do MEI com oportunidades por bairro, scores e checklist de formalização.*
+
+### Repositório e Código-Fonte
+
+Todo o código está disponível em: **https://github.com/patryckalves/pulso-fortal**
+
+Commits documentam a evolução do projeto:
+- `5e3f889` — Protótipo inicial com 6 telas HTML/CSS/JS
+- `475761b` — Seção 3 com dados reais (RAIS, SEBRAE, IBGE)
+- `c2a9512` — Correção de nomenclatura e PDF final
 
 ## 8.2 Impacto Esperado
 
