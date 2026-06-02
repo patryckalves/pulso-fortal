@@ -41,7 +41,7 @@ O processo de ideação utilizou o método **Starbusting (5W1H)** para explorar 
 | **Why?** Por quê? | Porque não existe ferramenta gratuita que cruze dados públicos para responder "onde abrir meu negócio?" |
 | **How?** Como? | ETL automatizado de fontes públicas + visualização web interativa |
 
-Seis ideias de produto foram geradas durante a sessão de brainstorming, das quais cinco foram selecionadas para prototipação:
+Seis ideias de produto foram geradas durante a sessão de brainstorming, das quais cinco foram selecionadas para prototipação. O registro completo do processo (5W1H, método das quatro categorias, rascunhos iniciais) está documentado no material de Design Thinking da equipe (wiki-ideacoes-tech/docs/).
 
 1. **Onde Abrir?** — recomendação de bairro por setor de negócio
 2. **Termômetro do Bairro** — indicadores econômicos em tempo real
@@ -125,7 +125,7 @@ O desenvolvimento do Pulso Fortal fundamenta-se nos conceitos apresentados nas q
 
 ## 3.1 Metodologia
 
-Adotamos uma abordagem **multimétodo** combinando análise quantitativa de bases públicas e pesquisa documental de estudos publicados sobre o perfil do microempreendedor brasileiro. Esta escolha se justifica porque:
+Adotamos uma abordagem **multimétodo** combinando: (a) análise quantitativa de bases públicas (RAIS, IBGE), e (b) dados de questionários estruturados aplicados pelo SEBRAE a microempreendedores brasileiros — a pesquisa "Perfil do MEI" (2023) entrevistou ~10.000 MEIs e a "Sobrevivência de Empresas" (2023) acompanhou ~17.000 empresas, fornecendo uma base de evidências muito superior aos 3-5 entrevistados que conseguiríamos realizar no período letivo. Esta escolha se justifica porque:
 
 1. **Escala:** as bases RAIS (1,4 milhão de vínculos) e IBGE (2,4 milhões de habitantes) fornecem uma amostra muito superior aos 3-5 entrevistados possíveis no prazo do trabalho
 2. **Representatividade:** estudos nacionais do SEBRAE com dezenas de milhares de respondentes capturam padrões que 5 entrevistas locais não capturariam
@@ -562,15 +562,6 @@ O protótipo completo está publicado e funcional em:
 
 *Figura 5: Radar do MEI com oportunidades por bairro, scores e checklist de formalização.*
 
-### Repositório e Código-Fonte
-
-Todo o código está disponível em: **https://github.com/patryckalves/pulso-fortal**
-
-Commits documentam a evolução do projeto:
-- `5e3f889` — Protótipo inicial com 6 telas HTML/CSS/JS
-- `475761b` — Seção 3 com dados reais (RAIS, SEBRAE, IBGE)
-- `c2a9512` — Correção de nomenclatura e PDF final
-
 ## 8.2 Impacto Esperado
 
 O Pulso Fortal resolve um problema real de **assimetria de informação** no empreendedorismo de bairro. Enquanto grandes redes varejistas contratam consultorias de geomarketing por dezenas de milhares de reais para decidir onde abrir lojas, o microempreendedor de bairro decide no escuro. O Pulso Fortal democratiza esse tipo de inteligência.
@@ -603,6 +594,3 @@ A pergunta que o projeto responde:
 
 **Anexos:**
 - [Link para o protótipo online](https://patryckalves.github.io/pulso-fortal/)
-- [Link para o repositório no GitHub](https://github.com/patryckalves/pulso-fortal)
-- [Dicionário de Dados (RAIS)](https://github.com/patryckalves/pulso-fortal/blob/main/README.md)
-- [Documentação da Arquitetura de Dados](https://github.com/patryckalves/pulso-fortal/blob/main/docs/arquitetura-dados.md)
