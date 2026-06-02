@@ -1,5 +1,5 @@
 /**
- * Grão Bairro Fortaleza — Shared JavaScript
+ * Pulso Fortal — Shared JavaScript
  * Navigation, data loading, chart rendering
  */
 
