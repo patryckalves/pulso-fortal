@@ -13,6 +13,8 @@
 - [Nome Completo] — Matrícula: __________
 - [Nome Completo] — Matrícula: __________
 - [Nome Completo] — Matrícula: __________
+- [Nome Completo] — Matrícula: __________
+- [Nome Completo] — Matrícula: __________
 
 **Protótipo online:** https://patryckalves.github.io/pulso-fortal/
 
@@ -327,17 +329,11 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 
 *Figura 6: Arquitetura do protótipo em 3 camadas — apresentação (HTML/CSS/JS), dados (JSON estático) e processamento (pipeline Python offline).*
 
-## 6.2 Diagrama do Protótipo
-
-![Diagrama detalhado do protótipo — fluxo usuário → CDN → pipeline](diagrams/arquitetura-prototipo.png)
-
-*Figura 7: Diagrama detalhado do fluxo — usuário → GitHub Pages CDN → dados JSON estáticos → pipeline ETL offline.*
-
-## 6.3 Justificativa e Caminho Evolutivo
+## 6.2 Justificativa e Caminho Evolutivo
 
 ### Por que arquitetura em camadas para o protótipo?
 
-1. **Tamanho da equipe (5 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
+1. **Tamanho da equipe (6 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
 
 2. **Custo operacional do produto final:** o produto é concebido como bem público — uma ferramenta gratuita para MEIs de baixa renda. GitHub Pages tem custo zero perpétuo. Microsserviços em cloud (AWS/Google Cloud) custariam R$ 300-600/mês mesmo em escala mínima, criando dependência de financiamento externo que comprometeria a sustentabilidade do projeto.
 
@@ -372,17 +368,17 @@ A arquitetura do protótipo foi projetada como **protótipo evolutivo** — conc
 
 ![Diagrama do caminho evolutivo — 3 fases do protótipo ao produto](diagrams/evolucao.png)
 
-*Figura 8: Caminho evolutivo em três fases — do protótipo estático (R$ 0/mês) ao produto multicanal (R$ 200/mês).*
+*Figura 7: Caminho evolutivo em três fases — do protótipo estático (R$ 0/mês) ao produto multicanal (R$ 200/mês).*
 
-## 6.4 Arquitetura-Alvo (Produto Final)
+## 6.3 Arquitetura-Alvo (Produto Final)
 
 Para a Fase 3, a arquitetura evolui para um modelo híbrido: **frontend estático + API em camadas + serviços desacoplados para distribuição**:
 
 ![Diagrama da arquitetura-alvo — produto final com frontend, API, banco de dados, pipeline e distribuição multicanal](diagrams/arquitetura-alvo.png)
 
-*Figura 9: Arquitetura-alvo para a Fase 3 — frontend estático preservado, API Gateway FastAPI, PostgreSQL, pipeline ETL e canais de distribuição (WhatsApp e Newsletter).*
+*Figura 8: Arquitetura-alvo para a Fase 3 — frontend estático preservado, API Gateway FastAPI, PostgreSQL, pipeline ETL e canais de distribuição (WhatsApp e Newsletter).*
 
-## 6.5 Stack Tecnológica
+## 6.4 Stack Tecnológica
 
 | Camada | Tecnologia | Justificativa |
 |--------|-----------|---------------|
