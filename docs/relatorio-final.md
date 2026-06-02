@@ -9,6 +9,9 @@
 ## Capa
 
 **Equipe:**
+- Antonio Maria Cavalcante Lima Neto — Matrícula: 2516992
+- Barbara Nepomuceno Guimarães — Matrícula: 2513729
+- Caio Terceiro Teles Neto — Matrícula: 2525005
 - Humberto David Castro Cavalcante — Matrícula: 2514883
 - Patryck Harley Alves Barros — Matrícula: 2513728
 - Quico Lúcio Pontes Bernal — Matrícula: 2516993
