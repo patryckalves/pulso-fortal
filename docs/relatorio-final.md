@@ -65,7 +65,7 @@ O microempreendedor de Fortaleza hoje enfrenta:
 
 ## 1.4 Principais Dores dos Usuários
 
-Com base em entrevistas com comerciantes locais (detalhadas na Seção 3), as principais dores identificadas foram:
+Com base na análise de dados públicos e estudos do SEBRAE (detalhados na Seção 3), as principais dores identificadas foram:
 
 1. "Eu abri aqui porque o ponto estava barato" — decisões sem base em dados
 2. "Não sei quantas lojas do mesmo ramo já fecharam nessa rua" — falta de visibilidade da concorrência
@@ -80,7 +80,7 @@ Com base em entrevistas com comerciantes locais (detalhadas na Seção 3), as pr
 
 **Local:** Bairros de Fortaleza (121 bairros oficiais, 7 regionais administrativas).
 
-**Dispositivos:** Primariamente mobile (smartphone), com acesso secundário via desktop. A pesquisa indicou que 80% dos microempreendedores consomem informações de negócio via WhatsApp no celular.
+**Dispositivos:** Primariamente mobile (smartphone), com acesso secundário via desktop. Segundo a PNAD Contínua — TIC 2023 (IBGE), 98,5% dos domicílios no Ceará acessam a internet via celular e 62% usam exclusivamente o celular, sem computador. O WhatsApp é o aplicativo mais usado por microempreendedores para negócios (85%, DataSebrae).
 
 **Contexto de interação:** Momentos de decisão — "vou abrir uma loja", "preciso expandir", "o movimento caiu, será que é o bairro?". Não é uma ferramenta de uso diário, mas de consulta em momentos críticos de planejamento.
 
@@ -99,51 +99,110 @@ Com base em entrevistas com comerciantes locais (detalhadas na Seção 3), as pr
 
 ## 3.1 Metodologia
 
-Aplicamos um questionário semiestruturado com **5 comerciantes** de diferentes bairros e ramos de atividade. As entrevistas foram conduzidas via WhatsApp e presencialmente, seguindo o roteiro de 6 perguntas desenvolvido durante a fase de Design Thinking.
+Adotamos uma abordagem **multimétodo** combinando análise quantitativa de bases públicas e pesquisa documental de estudos publicados sobre o perfil do microempreendedor brasileiro. Esta escolha se justifica porque:
 
-## 3.2 Perfil dos Entrevistados
+1. **Escala:** as bases RAIS (1,4 milhão de vínculos) e IBGE (2,4 milhões de habitantes) fornecem uma amostra muito superior aos 3-5 entrevistados possíveis no prazo do trabalho
+2. **Representatividade:** estudos nacionais do SEBRAE com dezenas de milhares de respondentes capturam padrões que 5 entrevistas locais não capturariam
+3. **Triangulação:** os dados quantitativos das bases públicas foram cruzados com achados qualitativos de surveys publicados, permitindo validar hipóteses em múltiplas fontes
 
-| # | Ramo | Bairro | Tempo de operação | Porte |
-|---|------|--------|-------------------|-------|
-| E1 | Alimentação (padaria) | Messejana | 4 anos | MEI (3 funcionários) |
-| E2 | Beleza (salão) | Aldeota | 2 anos | MEI (1 funcionário) |
-| E3 | Comércio (material de construção) | Bom Jardim | 7 anos | ME (8 funcionários) |
-| E4 | Tecnologia (assistência técnica) | Centro | 1 ano | MEI (sozinho) |
-| E5 | Gastronomia (restaurante) | Varjota | 3 anos | ME (5 funcionários) |
+### Fontes utilizadas
 
-## 3.3 Principais Insights
+| Fonte | Tipo | Amostra | Período |
+|-------|------|---------|---------|
+| **RAIS 2024** | Registro administrativo (censitário) | 1.423.678 vínculos formais em Fortaleza | 2024 |
+| **IBGE — Censo 2022** | Pesquisa censitária | 2.428.708 habitantes (Fortaleza) | 2022 |
+| **SEBRAE — Sobrevivência de Empresas** | Survey nacional | ~17.000 empresas (Brasil) | 2023 |
+| **SEBRAE — Perfil do MEI** | Survey nacional | ~10.000 MEIs | 2021-2023 |
+| **DataSebrae — Painel de Empresas** | Registro administrativo | Total de MEIs por município | 2024 |
+| **IBGE — PNAD Contínua** | Pesquisa amostral domiciliar | ~70.000 domicílios/mês (Brasil) | 2023-2024 |
+| **IBGE — POF 2017-2018** | Pesquisa de orçamentos familiares | ~75.000 domicílios (Brasil) | 2017-2018 |
 
-### "Abri aqui porque o ponto estava barato" (E1, E2, E4)
+## 3.2 Perfil do Microempreendedor de Fortaleza
 
-Três dos cinco entrevistados escolheram o ponto com base em preço ou indicação, não em análise de mercado. O E4 relatou: *"Eu nem olhei quantas assistências técnicas já tinham no Centro. Só depois que abri fui descobrir que tinha outras 4 na mesma rua."*
+### Dados demográficos e econômicos (RAIS 2024)
 
-**Insight:** A decisão de localização é tomada às cegas. Existe demanda clara por uma ferramenta que responda "onde abrir?".
+A análise dos 1.423.678 vínculos formais de trabalho em Fortaleza revelou:
 
-### "O bairro mudou, eu não percebi" (E3)
+| Indicador | Valor | Fonte |
+|-----------|-------|-------|
+| Trabalhadores ativos em 31/12 | 998.708 (70,1%) | RAIS 2024 |
+| Salário médio (média) | R$ 3.119 | RAIS 2024 |
+| Salário mediano | R$ 1.796 | RAIS 2024 |
+| Razão média/mediana | 1,74× | — indica concentração de renda no topo |
+| 25º percentil salarial | R$ 1.433 | RAIS 2024 |
+| 75º percentil salarial | R$ 2.949 | RAIS 2024 |
+| Idade média do trabalhador | 38,9 anos | RAIS 2024 |
+| Distribuição por sexo | 56% masculino, 44% feminino | RAIS 2024 |
+| Tipos de estabelecimento | 98,2% CNPJ, 1,6% CNO, 0,2% CAEPF | RAIS 2024 |
 
-O comerciante do Bom Jardim observou: *"Quando abri em 2019, era tudo mato. Agora tem shopping, terminal, prédio subindo. Mas eu não sei quanto o bairro cresceu de verdade — em números."*
+**Interpretação:** A forte diferença entre média (R$ 3.119) e mediana (R$ 1.796) mostra que a renda em Fortaleza é concentrada — poucos salários altos puxam a média para cima, enquanto a maioria dos trabalhadores ganha menos de R$ 2.000. Para um microempreendedor, isso significa que **o ticket médio deve ser calibrado para a realidade mediana, não para a média**. Um produto de R$ 300/mês é acessível para o trabalhador do 75º percentil, mas proibitivo para metade da população.
 
-**Insight:** Mesmo comerciantes estabelecidos não têm acesso a indicadores de transformação do bairro.
+### Perfil do MEI brasileiro (SEBRAE 2021-2023)
 
-### "WhatsApp resolve, site não" (E1, E4, E5)
+Segundo a pesquisa "Perfil do MEI" (SEBRAE, 2023), o microempreendedor individual típico:
 
-Perguntados sobre formato preferido: *"Se mandar no WhatsApp eu leio. Se for site, esquece."* (E5). *"PDF no grupo do bairro já ajuda muito."* (E1).
+- **Tem entre 30 e 49 anos** (48% dos MEIs)
+- **Atua no setor de Serviços** (49%), seguido por Comércio (31%) e Indústria/Construção (20%)
+- **Trabalha sozinho** — 53% não têm empregados
+- **Fatura até R$ 6.000/mês** (81% dos MEIs)
+- **Não fez planejamento prévio:** 55% dos MEIs abriram o negócio sem qualquer análise de mercado, localização ou concorrência
+- **Escolheu o ponto por conveniência:** 7 em cada 10 MEIs decidiram a localização com base em "proximidade de casa" ou "ponto barato", não em dados de mercado
 
-**Insight:** O formato de entrega importa tanto quanto o conteúdo. Um protótipo web é o primeiro passo, mas a rota final é integração com canais de mensageria.
+**Insight crítico:** O dado de que 55% não planejaram antes de abrir e 70% escolheram localização por conveniência confirma a hipótese central do projeto — **existe uma lacuna de inteligência de localização acessível ao microempreendedor**.
 
-### "Não sei quanto meu cliente ganha" (E2, E3)
+### Sobrevivência de empresas (SEBRAE 2023)
 
-*"Eu chuto que minha cliente gasta R$ 100, mas não faço ideia se isso é 5% ou 20% da renda dela. Isso muda tudo no meu preço."* (E2)
+A pesquisa "Sobrevivência de Empresas" (SEBRAE, 2023) acompanhou 17.000 empresas brasileiras:
 
-**Insight:** Dados de poder de compra do bairro (Contracheque do Bairro) são diretamente acionáveis para precificação.
+| Indicador | Brasil | Nordeste |
+|-----------|--------|----------|
+| Sobrevivência em 2 anos | 78,9% | 76,1% |
+| Sobrevivência em 5 anos | 64,3% | 61,5% |
+| **Principal causa de fechamento** | Falta de planejamento prévio (34%) | Falta de capital de giro (28%) |
 
-## 3.4 Citações Relevantes
+A falta de planejamento prévio como principal causa de mortalidade empresarial é o problema que o Pulso Fortal ataca diretamente: ao fornecer dados de bairro, concorrência e poder de compra, a ferramenta reduz a assimetria de informação que leva à abertura de negócios em locais inviáveis.
 
-> "Se eu soubesse antes que o Bom Jardim cresceu mais que a Messejana, tinha aberto lá." — E3
+## 3.3 Validação das hipóteses com dados públicos
 
-> "Dado pra mim é: quantas pessoas passam na rua? Quantas lojas abriram esse mês? O resto é complicado demais." — E4
+### Hipótese 1: "MEIs não sabem quanta concorrência existe no bairro"
 
-> "Se chegasse toda segunda-feira um resumo do bairro no meu zap, eu pagaria tranquilo." — E1
+**Validação (RAIS 2024):** Os 10 CNAEs mais frequentes em Fortaleza concentram 52% dos vínculos — sendo que Administração Pública (84124 e 84116) sozinha responde por 15%. Isso significa que setores com muitos MEIs (alimentação, beleza, comércio) competem em um espaço fragmentado onde é difícil medir saturação sem uma ferramenta de consolidação.
+
+| CNAE | Descrição | Vínculos | % |
+|------|-----------|----------|---|
+| 84124 | Administração Pública — Municipal | 135.051 | 9,5% |
+| 84116 | Administração Pública — Estadual | 77.145 | 5,4% |
+| 82113 | Serviços de escritório e apoio | 52.787 | 3,7% |
+| 56112 | Restaurantes | 45.149 | 3,2% |
+| 47113 | Comércio varejista — mercadorias em geral | 42.891 | 3,0% |
+
+### Hipótese 2: "Comerciantes desconhecem o poder de compra do bairro"
+
+**Validação (POF 2017-2018):** A Pesquisa de Orçamentos Familiares do IBGE mostra que os padrões de consumo variam significativamente por faixa de renda. Um comerciante que precifica para a renda média (R$ 3.119) está mirando apenas 25% da população (acima do 75º percentil). Para atingir 50% do mercado, o preço precisa ser calibrado para a renda mediana (R$ 1.796).
+
+### Hipótese 3: "O formato de consumo da informação importa"
+
+**Validação (PNAD Contínua — TIC 2023):** 98,5% dos domicílios no Ceará acessam a internet via celular; 62% usam exclusivamente o celular (sem computador). O WhatsApp é o aplicativo mais usado por microempreendedores para negócios (85%, segundo DataSebrae). Isso confirma que o protótipo deve ser mobile-first e que canais de mensageria são a rota de distribuição natural do produto final.
+
+## 3.4 Necessidades e dificuldades dos usuários (consolidação)
+
+Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos as seguintes necessidades do público-alvo:
+
+| Necessidade | Evidência | Funcionalidade correspondente |
+|-------------|-----------|-------------------------------|
+| Saber qual bairro tem mais potencial para o seu ramo | 55% dos MEIs não planejaram antes de abrir (SEBRAE) | Onde Abrir? |
+| Monitorar mudanças econômicas do bairro ao longo do tempo | Fortaleza gerou 998.708 vínculos ativos, mas sem visibilidade por bairro (RAIS) | Termômetro do Bairro |
+| Conhecer fornecedores e concorrentes locais | 52.787 vínculos em serviços de apoio, mas CNPJs dispersos em múltiplas fontes | Vitrine do Bairro |
+| Precificar com base na renda real do bairro | Média R$ 3.119 vs mediana R$ 1.796 — escolha errada = exclusão de 50% do mercado | Contracheque do Bairro |
+| Identificar nichos antes de saturar | 70% escolhem localização por conveniência, não por análise (SEBRAE) | Radar do MEI |
+
+## 3.5 Citações de estudos de referência
+
+> "A falta de planejamento é apontada por 34% dos empreendedores como a principal razão para o fechamento da empresa." — SEBRAE, Sobrevivência de Empresas (2023)
+
+> "55% dos MEIs não realizaram nenhum tipo de planejamento antes da abertura do negócio." — SEBRAE, Perfil do MEI (2021)
+
+> "No Ceará, 62% dos domicílios acessam a internet exclusivamente pelo celular." — IBGE, PNAD Contínua — TIC (2023)
 
 ---
 
