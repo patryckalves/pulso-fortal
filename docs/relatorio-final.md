@@ -40,7 +40,7 @@ O processo de ideação utilizou o método **Starbusting (5W1H)** para explorar 
 | **Why?** Por quê? | Porque não existe ferramenta gratuita que cruze dados públicos para responder "onde abrir meu negócio?" |
 | **How?** Como? | ETL automatizado de fontes públicas + visualização web interativa |
 
-Seis ideias de produto foram geradas durante a sessão de brainstorming, das quais cinco foram selecionadas para prototipação. O registro completo do processo (5W1H, método das quatro categorias, rascunhos iniciais) está documentado no material de Design Thinking da equipe (wiki-ideacoes-tech/docs/).
+Seis ideias de produto foram geradas durante a sessão de brainstorming, das quais cinco foram selecionadas para prototipação. O registro completo do processo (5W1H, método das quatro categorias, rascunhos iniciais) está documentado no material de Design Thinking da equipe.
 
 1. **Onde Abrir?** — recomendação de bairro por setor de negócio
 2. **Termômetro do Bairro** — indicadores econômicos em tempo real
@@ -330,7 +330,7 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 
 ### Por que arquitetura em camadas para o protótipo?
 
-1. **Tamanho da equipe (6 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
+1. **Tamanho da equipe (3 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
 
 2. **Custo operacional do produto final:** o produto é concebido como bem público — uma ferramenta gratuita para MEIs de baixa renda. GitHub Pages tem custo zero perpétuo. Microsserviços em cloud (AWS/Google Cloud) custariam R$ 300-600/mês mesmo em escala mínima, criando dependência de financiamento externo que comprometeria a sustentabilidade do projeto.
 
@@ -353,7 +353,7 @@ A arquitetura do protótipo foi projetada como **protótipo evolutivo** — conc
 **Fase 2 — API Dinâmica (3 meses):**
 - Substituição dos JSONs estáticos por API FastAPI servindo dados do banco SQLite/PostgreSQL
 - Frontend permanece inalterado (contrato de dados compatível)
-- Pipeline Python migra de script manual para cron job mensal (já modelado no N688)
+- Pipeline Python migra de script manual para cron job mensal
 - Ingestão real do CAGED FTP com cruzamento CNPJ → Brasil API → bairro
 - Custo estimado: ~R$ 80/mês (VPS + domínio)
 
