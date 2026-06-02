@@ -16,8 +16,6 @@
 
 **Protótipo online:** https://patryckalves.github.io/pulso-fortal/
 
-**Repositório:** https://github.com/patryckalves/pulso-fortal
-
 ---
 
 ---
@@ -71,6 +69,34 @@ Com base na análise de dados públicos e estudos do SEBRAE (detalhados na Seç�
 2. "Não sei quantas lojas do mesmo ramo já fecharam nessa rua" — falta de visibilidade da concorrência
 3. "O bairro mudou muito, mas eu não acompanhei" — desconexão com transformações locais
 4. "Preciso saber se vale a pena investir mais ou mudar de bairro" — ausência de inteligência para expansão
+
+---
+
+## Referencial Teórico
+
+O desenvolvimento do Pulso Fortal fundamenta-se nos conceitos apresentados nas quatro unidades da disciplina:
+
+**Design Thinking (PA1):** o processo de duplo diamante — divergir (descobrir) e convergir (definir, desenvolver, entregar) — orientou a ideação do projeto (Brown, 2008). A aplicação do método Starbusting (5W1H) e da Matriz das Quatro Categorias na seleção de ideias segue o framework de facilitação de brainstorming proposto no material de estudo, em que o facilitador "cria um ambiente colaborativo e estimula a participação de todos" sem avaliar a qualidade das ideias durante a sessão.
+
+**Gestão de Projetos (PA2):** o escopo do protótipo foi definido como subconjunto das ideias geradas (5 ferramentas de 6 originais), aplicando o princípio de que "escopo são as entregas, mas o caminho muda". A estrutura do cronograma segue o modelo de ciclo de vida iterativo-incremental, compatível com o conceito de protótipo evolutivo.
+
+**Arquitetura de Software (PA3):** a escolha de arquitetura em camadas — e não microsserviços — justifica-se pelo contexto organizacional: equipe pequena, orçamento zero e prazo acadêmico. Como estabelece o material de estudo, "a infraestrutura existente, orçamentos e competências técnicas afetam diretamente as escolhas arquiteturais". O diagrama da Seção 6.4 projeta a evolução para arquitetura híbrida, seguindo o princípio de que sistemas podem exigir "mudança de arquitetura quando novos requisitos funcionais e não-funcionais tornam a estrutura atual ineficaz".
+
+**Prototipagem (PA4):** o protótipo foi concebido como **protótipo evolutivo** — aquele que "é refinado continuamente até virar o produto final" — e não descartável. Esta escolha maximiza o retorno do esforço investido e está alinhada com a Seção 6.3, que detalha as três fases de evolução planejadas. A fidelidade do protótipo atual é média-alta: telas completas, interatividade real e dados fundamentados, aproximando-se do polo "HTML/CSS" no espectro de fidelidade.
+
+**Curricularização da Extensão (Res. CEPE 11/2022):** o projeto atende ao requisito de que 10% da carga horária seja em atividade de extensão, articulando ensino (disciplinas do curso), pesquisa (análise de dados públicos) e extensão (solução voltada a microempreendedores de Fortaleza).
+
+### Referências citadas no texto
+
+- BASS, L.; CLEMENTS, P.; KAZMAN, R. *Software Architecture in Practice*. 3rd ed. Addison-Wesley, 2013.
+- BROWN, T. Design Thinking. *Harvard Business Review*, v. 86, n. 6, p. 84-92, 2008.
+- IBGE. *Pesquisa de Orçamentos Familiares 2017-2018*. Rio de Janeiro: IBGE, 2019.
+- IBGE. *Censo Demográfico 2022*. Rio de Janeiro: IBGE, 2023.
+- IBGE. *PNAD Contínua — Tecnologia da Informação e Comunicação 2023*. Rio de Janeiro: IBGE, 2024.
+- MTE. *Relação Anual de Informações Sociais (RAIS) — Ano-base 2024*. Brasília: Ministério do Trabalho e Emprego, 2025.
+- NIELSEN, J. *Usability Engineering*. San Francisco: Morgan Kaufmann, 1993.
+- SEBRAE. *Perfil do Microempreendedor Individual 2023*. Brasília: SEBRAE, 2023.
+- SEBRAE. *Sobrevivência de Empresas no Brasil*. Brasília: SEBRAE, 2023.
 
 ---
 
@@ -291,9 +317,11 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 
 # 6. Definição da Arquitetura da Solução
 
-## 6.1 Tipo de Arquitetura
+> **Nota:** esta seção apresenta a arquitetura em dois níveis: (a) a arquitetura real do protótipo entregue, e (b) a arquitetura-alvo para o produto em produção. Esta distinção é deliberada: o protótipo valida a experiência do usuário e a viabilidade técnica; a arquitetura-alvo representa o caminho evolutivo planejado.
 
-**Arquitetura em Camadas (Layered Architecture)** com separação clara em três camadas:
+## 6.1 Arquitetura do Protótipo (Entregue)
+
+**Arquitetura em Camadas (Layered Architecture)** com separação em três camadas, adequada ao escopo de validação:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -316,7 +344,7 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 └─────────────────────────────────────────────────────────┘
 ```
 
-## 6.2 Diagrama de Arquitetura
+## 6.2 Diagrama do Protótipo
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -355,23 +383,100 @@ Com base na triangulação das três fontes (RAIS, SEBRAE, IBGE), consolidamos a
 └──────────────────────────────────────────────────────────────────┘
 ```
 
-## 6.3 Justificativa da Escolha
+## 6.3 Justificativa e Caminho Evolutivo
 
-**Por que arquitetura em camadas e não microsserviços?**
+### Por que arquitetura em camadas para o protótipo?
 
-1. **Tamanho da equipe (5 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional para um protótipo acadêmico.
+1. **Tamanho da equipe (5 pessoas):** uma arquitetura de microsserviços exigiria orquestração de containers, service discovery e API gateway — complexidade desproporcional ao escopo de validação (Bass, Clements & Kazman, 2013).
 
-2. **Prazo (4 dias para o protótipo):** o deploy de um site estático no GitHub Pages leva minutos. Um deploy de microsserviços levaria dias de configuração.
+2. **Tempo de deploy:** o deploy de um site estático no GitHub Pages é imediato (git push). Um deploy de microsserviços exigiria esteira de CI/CD, orquestração de containers e configuração de DNS — incompatível com o escopo de um MVP acadêmico.
 
 3. **Custo operacional zero:** GitHub Pages é gratuito. Não há servidores para manter, escalar ou monitorar. Para um produto voltado a MEIs — público de baixa renda — a sustentabilidade financeira da infraestrutura é crítica.
 
-4. **Performance mobile:** arquivos estáticos em CDN carregam mais rápido que chamadas a APIs dinâmicas — essencial para usuários em 3G/4G na periferia de Fortaleza.
+4. **Performance mobile:** arquivos estáticos em CDN carregam mais rápido que chamadas a APIs dinâmicas — essencial para usuários em 3G na periferia de Fortaleza (Nielsen, 1993 — Lei de Usabilidade: 0,1s para sensação de instantaneidade).
 
-5. **Caminho evolutivo claro:** a separação em camadas permite que, no futuro, a camada de dados estáticos seja substituída por uma API dinâmica (FastAPI/Flask) sem alterar o frontend. Os JSONs já seguem um contrato de dados que seria a base dos endpoints.
+5. **Alinhamento com Design Thinking:** o protótipo evolutivo (PA4) preconiza começar com baixa fidelidade e refinar incrementalmente. Uma arquitetura de camadas com separação clara preserva o investimento: o frontend não é descartado quando o backend evolui.
 
-**Por que não monolítica?** Embora mais simples, uma aplicação monolítica tradicional (backend + frontend acoplados) exigiria servidor, banco de dados em runtime e autenticação — custos e complexidade que não se justificam para um MVP.
+### Caminho Evolutivo: do Protótipo ao Produto
 
-## 6.4 Stack Tecnológica
+A arquitetura do protótipo foi projetada como **protótipo evolutivo** — conceito central da disciplina (ver Seção 1.2) em que o artefato inicial não é descartado, mas refinado incrementalmente até se tornar o produto final. As três fases planejadas são:
+
+**Fase 1 — Atual (protótipo entregue):**
+- Frontend estático (HTML/CSS/JS vanilla) servido via CDN
+- Dados em JSON pré-processado por pipeline Python offline
+- 5 ferramentas com dados sintéticos calibrados com RAIS real
+- Custo: R$ 0/mês
+
+**Fase 2 — API Dinâmica (3 meses):**
+- Substituição dos JSONs estáticos por API FastAPI servindo dados do banco SQLite/PostgreSQL
+- Frontend permanece inalterado (contrato de dados compatível)
+- Pipeline Python migra de script manual para cron job mensal (já modelado no N688)
+- Ingestão real do CAGED FTP com cruzamento CNPJ → Brasil API → bairro
+- Custo estimado: ~R$ 80/mês (VPS + domínio)
+
+**Fase 3 — Distribuição Multicanal (6 meses):**
+- API existente + frontend web → adição de bot WhatsApp (consumo nº 1 do público-alvo, PNAD TIC 2023)
+- Newsletter semanal automática (template HTML gerado a partir dos mesmos endpoints da API)
+- Autenticação simples (login gov.br) para personalização por bairro
+- Custo estimado: ~R$ 200/mês (VPS + WhatsApp Business API)
+
+```
+FASE 1 (hoje)          FASE 2 (3 meses)         FASE 3 (6 meses)
+┌──────────────┐      ┌──────────────┐         ┌──────────────┐
+│ HTML/CSS/JS  │ ───→ │ HTML/CSS/JS  │  ───→   │ HTML/CSS/JS  │
+│ (GitHub Pages)│      │ (Vercel)     │         │ (Vercel)     │
+│              │      │              │         │              │
+│ JSON estático│      │ FastAPI      │         │ FastAPI      │
+│ (pré-pronto) │      │ (Docker)     │         │ (Docker)     │
+│              │      │              │         │              │
+│ Pipeline     │      │ Pipeline     │         │ Pipeline     │
+│ manual       │      │ cronjob      │         │ cronjob      │
+│              │      │              │         │              │
+│ R$ 0/mês     │      │ R$ 80/mês    │         │ R$ 200/mês   │
+│              │      │              │    ┌────┴─────────────┤
+│              │      │              │    │ Bot WhatsApp     │
+│              │      │              │    │ Newsletter       │
+│              │      │              │    │ Login gov.br     │
+└──────────────┘      └──────────────┘    └──────────────────┘
+```
+
+## 6.4 Arquitetura-Alvo (Produto Final)
+
+Para a Fase 3, a arquitetura evolui para um modelo híbrido: **frontend estático + API em camadas + serviços desacoplados para distribuição**:
+
+```
+┌──────────────────────────────────────────────────────────────────┐
+│                     FRONTEND (Estático)                           │
+│  GitHub Pages / Vercel — mesmo código da Fase 1                  │
+└────────────────────────────┬─────────────────────────────────────┘
+                             │ HTTPS (fetch)
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│                     API Gateway (FastAPI)                         │
+│  /bairros/{id}  /indicadores  /empresas  /oportunidades          │
+└──────┬───────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────────────────────────────────────────────────────────┐
+│              PostgreSQL + Redis (cache)                           │
+│  Mesmo schema do protótipo N688                                  │
+└──────┬───────────────────────────────────────────────────────────┘
+       │
+       ▼
+┌──────────────────────────────────────────────────────────────────┐
+│              Pipeline ETL (cronjob mensal)                       │
+│  RAIS + IBGE + CAGED FTP + Brasil API + Fortaleza CKAN           │
+└──────────────────────┬───────────────────────────────────────────┘
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+┌─────────────────┐      ┌─────────────────────┐
+│ Bot WhatsApp    │      │ Newsletter Semanal   │
+│ (Twilio/Meta)   │      │ (gerada via API)     │
+└─────────────────┘      └─────────────────────┘
+```
+
+## 6.5 Stack Tecnológica
 
 | Camada | Tecnologia | Justificativa |
 |--------|-----------|---------------|
@@ -480,9 +585,9 @@ O Pulso Fortal resolve um problema real de **assimetria de informação** no emp
 
 | ▶️ Start | ⏹️ Stop | 🔄 Continue |
 |----------|---------|-------------|
-| GitHub Pages como plataforma de protótipo (mais rápido que Figma) | Subestimar granularidade dos dados públicos (achamos que teríamos bairro, só tivemos município) | Documentar metodologia e limitações (transparência com o usuário) |
-| Pipeline offline → JSON estático (performance e simplicidade) | Começar com 6 ideias (focamos em 5, Alvará na Mão ficou pra depois) | Usar dados reais como base (RAIS e IBGE dão credibilidade ao protótipo) |
-| Design system próprio sem frameworks (leve, rápido de iterar) | Prometer funcionalidades que exigem APIs externas em tempo real (CAGED FTP é inviável no prazo) | Colaboração via Git/GitHub (histórico, revisão, deploy automático) |
+| Usar HTML/CSS vanilla como plataforma de protótipo funcional | Subestimar granularidade dos dados públicos (RAIS não tem bairro — 999997) | Documentar metodologia e limitações (transparência acadêmica) |
+| Pipeline offline → JSON estático (performance e simplicidade) | Escopo muito amplo (começamos com 6 ideias, focamos em 5) | Usar dados reais como base (RAIS e IBGE dão credibilidade) |
+| Design system próprio sem frameworks (leve, rápido de iterar) | Idealizar integrações com APIs externas sem validação prévia (CAGED FTP) | Colaboração via Git/GitHub (histórico, revisão, deploy automático) |
 
 ## 8.4 Considerações Finais
 
