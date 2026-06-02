@@ -9,12 +9,9 @@
 ## Capa
 
 **Equipe:**
-- Patryck Alves — Matrícula: __________
-- [Nome Completo] — Matrícula: __________
-- [Nome Completo] — Matrícula: __________
-- [Nome Completo] — Matrícula: __________
-- [Nome Completo] — Matrícula: __________
-- [Nome Completo] — Matrícula: __________
+- Humberto David Castro Cavalcante — Matrícula: 2514883
+- Patryck Harley Alves Barros — Matrícula: 2513728
+- Quico Lúcio Pontes Bernal — Matrícula: 2516993
 
 **Protótipo online:** https://patryckalves.github.io/pulso-fortal/
 
@@ -494,5 +491,4 @@ A pergunta que o projeto responde:
 
 ---
 
-**Anexos:**
-- [Link para o protótipo online](https://patryckalves.github.io/pulso-fortal/)
+
