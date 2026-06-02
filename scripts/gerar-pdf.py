@@ -166,7 +166,8 @@ full_html = f"""<!DOCTYPE html>
 </body>
 </html>"""
 
-# Generate PDF
-HTML(string=full_html).write_pdf(OUTPUT)
+# Generate PDF — base_url so relative image paths resolve
+base_url = os.path.dirname(INPUT)
+HTML(string=full_html, base_url=base_url).write_pdf(OUTPUT)
 print(f"✅ PDF generated: {OUTPUT}")
 print(f"   Size: {os.path.getsize(OUTPUT) / 1024:.1f} KB")
