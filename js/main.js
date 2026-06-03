@@ -51,11 +51,11 @@ function renderBarChart(containerId, data, options = {}) {
   container.innerHTML = data.map(d => {
     const pct = (d[valueKey] / max) * 100;
     return `
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
-        <div style="width:120px;font-size:0.8rem;text-align:right;color:var(--color-text-secondary);flex-shrink:0;">${d[labelKey]}</div>
-        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:24px;overflow:hidden;">
-          <div style="height:100%;width:${pct}%;background:${color};border-radius:4px;transition:width 0.5s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;">
-            <span style="font-size:0.7rem;color:white;font-weight:600;">${d[valueKey]}</span>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+        <div style="width:140px;font-size:0.9rem;text-align:right;color:var(--color-text-secondary);flex-shrink:0;font-weight:500;">${d[labelKey]}</div>
+        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:28px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${color};border-radius:4px;transition:width 0.5s ease;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;min-width:${d[valueKey] > 0 ? '40px' : '0'};">
+            <span style="font-size:0.8rem;color:white;font-weight:600;">${d[valueKey]}</span>
           </div>
         </div>
       </div>`;

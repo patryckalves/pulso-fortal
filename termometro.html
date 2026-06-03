@@ -14,7 +14,7 @@
   <div class="container">
     <a href="index.html" class="nav-brand">
       <span class="logo-icon">🏘️</span>
-Pulso Fortal</a>
+      Pulso Fortal
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
@@ -218,20 +218,20 @@ function renderEmploymentChart(series) {
     const month = m.mes.split('-')[1];
     const monthNames = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'];
     return `
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
-        <div style="width:32px;font-size:0.7rem;text-align:right;color:var(--color-text-secondary);">${monthNames[parseInt(month)-1]}</div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:2px;">
-          <div style="height:10px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
-            <div style="height:100%;width:${hirePct}%;background:var(--color-green);border-radius:3px;" title="Admissões: ${m.admissoes}"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <div style="width:34px;font-size:0.8rem;text-align:right;color:var(--color-text-secondary);font-weight:500;">${monthNames[parseInt(month)-1]}</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:3px;">
+          <div style="height:12px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
+            <div style="height:100%;width:${hirePct}%;background:var(--color-green);border-radius:3px;" title="Admissoes: ${m.admissoes}"></div>
           </div>
-          <div style="height:10px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
+          <div style="height:12px;background:var(--color-surface-alt);border-radius:3px;overflow:hidden;">
             <div style="height:100%;width:${firePct}%;background:var(--color-red);border-radius:3px;" title="Desligamentos: ${m.desligamentos}"></div>
           </div>
         </div>
       </div>`;
   }).join('') + `
-    <div style="display:flex;gap:16px;margin-top:8px;font-size:0.75rem;color:var(--color-text-secondary);">
-      <span>🟢 Admissões</span><span>🔴 Desligamentos</span>
+    <div style="display:flex;gap:16px;margin-top:10px;font-size:0.85rem;color:var(--color-text-secondary);">
+      <span>Admissoes</span><span>Desligamentos</span>
     </div>`;
 }
 

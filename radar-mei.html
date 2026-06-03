@@ -14,7 +14,7 @@
   <div class="container">
     <a href="index.html" class="nav-brand">
       <span class="logo-icon">🏘️</span>
-Pulso Fortal</a>
+      Pulso Fortal
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Início</a></li>
@@ -188,12 +188,12 @@ function renderPotencial() {
   document.getElementById('potencialChart').innerHTML = sorted.map((b, i) => {
     const pct = Math.min(b.crescimento / 7 * 100, 100);
     return `
-      <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-        <span style="font-size:0.75rem;color:var(--color-text-secondary);width:20px;">#${i+1}</span>
-        <span style="font-size:0.85rem;width:120px;text-align:right;">${b.nome}</span>
-        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:24px;overflow:hidden;">
-          <div style="height:100%;width:${pct}%;background:${i === 0 ? 'var(--color-green)' : 'var(--color-accent)'};border-radius:4px;display:flex;align-items:center;padding-left:8px;">
-            <span style="font-size:0.7rem;color:white;font-weight:600;">${formatPct(b.crescimento)} ao ano</span>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+        <span style="font-size:0.85rem;color:var(--color-text-secondary);width:22px;">#${i+1}</span>
+        <span style="font-size:0.9rem;width:140px;text-align:right;font-weight:500;">${b.nome}</span>
+        <div style="flex:1;background:var(--color-surface-alt);border-radius:4px;height:26px;overflow:hidden;">
+          <div style="height:100%;width:${pct}%;background:${i === 0 ? 'var(--color-green)' : 'var(--color-accent)'};border-radius:4px;display:flex;align-items:center;padding-left:10px;min-width:${pct > 8 ? '80px' : '0'};">
+            <span style="font-size:0.8rem;color:white;font-weight:600;">${formatPct(b.crescimento)} ao ano</span>
           </div>
         </div>
       </div>`;
